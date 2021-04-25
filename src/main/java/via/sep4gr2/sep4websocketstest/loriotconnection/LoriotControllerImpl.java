@@ -24,7 +24,7 @@ public class LoriotControllerImpl implements LoriotController{
     public LoriotControllerImpl() {
         socketClient = new LoriotWebSocketClient();
         socketClient.addPropertyChangeListener("RECEIVED_DATA", this::receiveData);
-        send(new Command("tx", "pulanpizda", 109)); // produces null pointer exception because the websocket instance in the client is null
+        send(new Command("tx", "hello there?", 109)); // produces null pointer exception because the websocket instance in the client is null
     }
 
     private void send(Command command) {
