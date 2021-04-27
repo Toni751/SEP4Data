@@ -1,4 +1,4 @@
-package via.sep4gr2.sep4websocketstest.loriotconnection;
+package via.sep4gr2.sep4websocketstest.util;
 
 import java.beans.PropertyChangeListener;
 

@@ -1,5 +1,7 @@
 package via.sep4gr2.sep4websocketstest.loriotconnection;
 
+import via.sep4gr2.sep4websocketstest.util.PropertyChangeSubject;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.net.URI;
