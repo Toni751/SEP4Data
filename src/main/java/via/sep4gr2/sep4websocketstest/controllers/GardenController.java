@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import via.sep4gr2.sep4websocketstest.models.database.DimGarden;
 import via.sep4gr2.sep4websocketstest.models.database.DimPlant;
+import via.sep4gr2.sep4websocketstest.models.restnetworking.GardenNetworking;
+import via.sep4gr2.sep4websocketstest.models.restnetworking.PlantNetworking;
 import via.sep4gr2.sep4websocketstest.services.GardenService;
 
 import java.util.List;
@@ -28,7 +30,8 @@ public class GardenController {
 
     @CrossOrigin(origins = "*")
     @GetMapping("/{ownerId}")
-    public @ResponseBody DimGarden getGardenByOwnerId(@PathVariable String ownerId) {
+    public @ResponseBody
+    GardenNetworking getGardenByOwnerId(@PathVariable String ownerId) {
         System.out.println("Controller getting garden for owner id " + ownerId);
         try{
             return gardenService.getGardenByOwnerId(ownerId);
@@ -41,7 +44,7 @@ public class GardenController {
     @CrossOrigin(origins = "*")
     @GetMapping("/{gardenName}")
     public @ResponseBody
-    List<DimPlant> getPlantsByGardenName(@PathVariable String gardenName) {
+    List<PlantNetworking> getPlantsByGardenName(@PathVariable String gardenName) {
         System.out.println("Controller getting plants for garden name " + gardenName);
         try{
             return gardenService.getPlantsByGardenName(gardenName);

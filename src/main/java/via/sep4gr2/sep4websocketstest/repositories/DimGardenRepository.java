@@ -19,7 +19,4 @@ public interface DimGardenRepository extends JpaRepository<DimGarden, Integer> {
     @Query("SELECT DISTINCT 1 AS gardens FROM DimGarden g WHERE EXISTS (SELECT 1 FROM DimGarden gr WHERE gr.name = :name)")
     List<Integer> checkIfGardenExistsByName(String name);
 
-    // here it may be just ":sensorIds", without the (), not sure
-    @Query("SELECT p FROM DimPlant p WHERE p.sensor_ID IN (:sensorIds)")
-    List<DimPlant> findPlantsBySensorIds(List<Integer> sensorIds);
 }

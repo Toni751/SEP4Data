@@ -1,4 +1,4 @@
-package via.sep4gr2.sep4websocketstest.models.networking;
+package via.sep4gr2.sep4websocketstest.models.loriotnetworking;
 
 public class DownLinkMessage {
     private String cmd;

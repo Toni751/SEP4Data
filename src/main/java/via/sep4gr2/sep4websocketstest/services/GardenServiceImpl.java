@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import via.sep4gr2.sep4websocketstest.models.database.DimGarden;
 import via.sep4gr2.sep4websocketstest.models.database.DimPlant;
+import via.sep4gr2.sep4websocketstest.models.restnetworking.GardenNetworking;
+import via.sep4gr2.sep4websocketstest.models.restnetworking.PlantNetworking;
 import via.sep4gr2.sep4websocketstest.repositories.DimGardenRepository;
+import via.sep4gr2.sep4websocketstest.repositories.DimPlantRepository;
 
 import java.util.List;
 
@@ -12,6 +15,9 @@ import java.util.List;
 public class GardenServiceImpl implements GardenService{
     @Autowired
     private DimGardenRepository gardenRepo;
+
+    @Autowired
+    private DimPlantRepository plantRepo;
 
     @Override
     public void addGarden(DimGarden garden) throws Exception {
@@ -31,7 +37,7 @@ public class GardenServiceImpl implements GardenService{
     }
 
     @Override
-    public DimGarden getGardenByOwnerId(String ownerId) throws Exception {
+    public GardenNetworking getGardenByOwnerId(String ownerId) throws Exception {
         if(ownerId == null || ownerId.length() == 0)
             throw new Exception("Invalid owner id");
         try {
@@ -40,7 +46,9 @@ public class GardenServiceImpl implements GardenService{
             if(gardenWithSensors == null || gardenWithSensors.size() == 0)
                 return null;
 
-            return gardenWithSensors.get(0);
+            // add
+            // return gardenWithSensors.get(0);
+            return null;
         } catch (Exception e) {
             System.out.println("Getting garden by owner id threw exception");
             throw new Exception(e.getMessage());
@@ -48,15 +56,16 @@ public class GardenServiceImpl implements GardenService{
     }
 
     @Override
-    public List<DimPlant> getPlantsByGardenName(String gardenName) throws Exception {
+    public List<PlantNetworking> getPlantsByGardenName(String gardenName) throws Exception {
         if(gardenName == null || gardenName.length() == 0)
             throw new Exception("Invalid garden name");
         try {
             List<Integer> sensorIds = gardenRepo.findAllSensorIdsByName(gardenName);
-            List<DimPlant> plantsWithSensors = gardenRepo.findPlantsBySensorIds(sensorIds);
+            List<DimPlant> plantsWithSensors = plantRepo.findPlantsBySensorIds(sensorIds);
 
             //there are some duplicates or idk, you probably need to group the plants by unique_plant_name and create some new (networking) objects
-            return plantsWithSensors;
+            // return plantsWithSensors;
+            return null;
         } catch (Exception e) {
             System.out.println("Getting plants by garden name threw exception");
             throw new Exception(e.getMessage());

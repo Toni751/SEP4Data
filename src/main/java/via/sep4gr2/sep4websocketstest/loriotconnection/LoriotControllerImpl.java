@@ -4,10 +4,10 @@ import com.google.common.base.Splitter;
 import com.google.common.collect.Iterables;
 import com.google.gson.Gson;
 import org.springframework.stereotype.Component;
-import via.sep4gr2.sep4websocketstest.models.networking.Command;
-import via.sep4gr2.sep4websocketstest.models.networking.DownLinkMessage;
-import via.sep4gr2.sep4websocketstest.models.networking.SensorData;
-import via.sep4gr2.sep4websocketstest.models.networking.UpLinkMessage;
+import via.sep4gr2.sep4websocketstest.models.loriotnetworking.Command;
+import via.sep4gr2.sep4websocketstest.models.loriotnetworking.DownLinkMessage;
+import via.sep4gr2.sep4websocketstest.models.loriotnetworking.SensorData;
+import via.sep4gr2.sep4websocketstest.models.loriotnetworking.UpLinkMessage;
 
 import java.beans.PropertyChangeEvent;
 import java.time.Instant;

@@ -11,12 +11,12 @@ public class FactPlantStatus {
     @ManyToOne
     @Id
     @JoinColumn(name = "plant_ID", referencedColumnName = "plant_ID")
-    private DimPlant plant;
+    private DimPlant plant_ID;
 
     @ManyToOne
     @Id
     @JoinColumn(name = "garden_ID", referencedColumnName = "garden_ID")
-    private DimGarden garden;
+    private DimGarden garden_ID;
 
     @Id
     @Column(columnDefinition = "DATE")
@@ -28,20 +28,20 @@ public class FactPlantStatus {
 
     private double measurement_value;
 
-    public DimPlant getPlant() {
-        return plant;
+    public DimPlant getPlant_ID() {
+        return plant_ID;
     }
 
-    public void setPlant(DimPlant plant) {
-        this.plant = plant;
+    public void setPlant_ID(DimPlant plant_ID) {
+        this.plant_ID = plant_ID;
     }
 
-    public DimGarden getGarden() {
-        return garden;
+    public DimGarden getGarden_ID() {
+        return garden_ID;
     }
 
-    public void setGarden(DimGarden garden) {
-        this.garden = garden;
+    public void setGarden_ID(DimGarden garden) {
+        this.garden_ID = garden;
     }
 
     public LocalDate getStatus_date() {
