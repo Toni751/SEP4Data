@@ -5,14 +5,14 @@ public class GardenNetworking {
     private double land_area;
     private String city;
     private String street;
-    private int number;
+    private String number;
 
     private double averageTemperature;
     private double averageHumidity;
     private double averageLight;
     private double averageCO2;
 
-    public GardenNetworking(String name, double land_area, String city, String street, int number, double averageTemperature, double averageHumidity, double averageLight, double averageCO2) {
+    public GardenNetworking(String name, double land_area, String city, String street, String number, double averageTemperature, double averageHumidity, double averageLight, double averageCO2) {
         this.name = name;
         this.land_area = land_area;
         this.city = city;
@@ -40,7 +40,7 @@ public class GardenNetworking {
         return street;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
