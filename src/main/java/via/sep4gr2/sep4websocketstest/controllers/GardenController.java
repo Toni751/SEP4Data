@@ -18,13 +18,14 @@ public class GardenController {
 
     @CrossOrigin(origins = "*")
     @PostMapping
-    public void addGarden(@RequestBody DimGarden garden) throws Exception {
+    public boolean addGarden(@RequestBody DimGarden garden) throws Exception {
         System.out.println("Controller adding garden");
         try{
             gardenService.addGarden(garden);
+            return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            throw new Exception(e.getMessage());
+            return false;
         }
     }
 

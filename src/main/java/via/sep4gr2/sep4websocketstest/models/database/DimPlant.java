@@ -9,8 +9,6 @@ public class DimPlant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int plant_ID;
-    // @Column(unique = true)
-    private String unique_plant_name;
     private int height;
     private int width;
     private String stage_of_growth;
@@ -26,8 +24,6 @@ public class DimPlant {
 
     private String common_plant_name;
     private String category_name;
-    private int sensor_ID;
-    private String sensor_type;
 
     public int getPlant_ID() {
         return plant_ID;
@@ -35,14 +31,6 @@ public class DimPlant {
 
     public void setPlant_ID(int plant_ID) {
         this.plant_ID = plant_ID;
-    }
-
-    public String getUnique_plant_name() {
-        return unique_plant_name;
-    }
-
-    public void setUnique_plant_name(String unique_plant_name) {
-        this.unique_plant_name = unique_plant_name;
     }
 
     public int getHeight() {
@@ -123,21 +111,5 @@ public class DimPlant {
 
     public void setCategory_name(String category_name) {
         this.category_name = category_name;
-    }
-
-    public int getSensor_ID() {
-        return sensor_ID;
-    }
-
-    public void setSensor_ID(int sensor_ID) {
-        this.sensor_ID = sensor_ID;
-    }
-
-    public String getSensor_type() {
-        return sensor_type;
-    }
-
-    public void setSensor_type(String sensor_type) {
-        this.sensor_type = sensor_type;
     }
 }

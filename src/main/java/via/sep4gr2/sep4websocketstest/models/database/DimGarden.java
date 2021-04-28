@@ -8,16 +8,13 @@ public class DimGarden {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int garden_ID;
-    // @Column(unique = true)
     private String name;
     private String owner_google_id;
     private String assistant_google_id;
     private double land_area;
     private String city;
     private String street;
-    private int number;
-    private int sensor_ID;
-    private String sensor_type;
+    private String number;
 
     public String getOwner_google_id() {
         return owner_google_id;
@@ -33,22 +30,6 @@ public class DimGarden {
 
     public void setAssistant_google_id(String assistant_google_id) {
         this.assistant_google_id = assistant_google_id;
-    }
-
-    public int getSensor_ID() {
-        return sensor_ID;
-    }
-
-    public void setSensor_ID(int sensor_ID) {
-        this.sensor_ID = sensor_ID;
-    }
-
-    public String getSensor_type() {
-        return sensor_type;
-    }
-
-    public void setSensor_type(String sensor_type) {
-        this.sensor_type = sensor_type;
     }
 
     public int getGarden_ID() {
@@ -91,11 +72,11 @@ public class DimGarden {
         this.street = street;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 }
