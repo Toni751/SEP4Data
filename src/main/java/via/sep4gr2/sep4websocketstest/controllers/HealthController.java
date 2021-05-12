@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class HealthController {
     @GetMapping
     public String getHealth(){
-        return "The application is up and running! *updated*";
+        return "The application is up and running! *updated* again";
     }
 }
