@@ -20,21 +20,22 @@ public class PlantController
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody
-    void insertPlant(@RequestBody DimPlant plant)
+    int insertPlant(@RequestBody DimPlant plant)
     {
         try
         {
-            plantService.insertPlant(plant);
+            return plantService.insertPlant(plant);
         } catch (Exception e)
         {
             System.out.println(e.getMessage());
+            return -1;
         }
     }
 
     @CrossOrigin(origins = "*")
     @GetMapping
     public @ResponseBody
-    List<EDWDimPlant> getAllPlants(){
+    List<DimPlant> getAllPlants(){
         return plantService.getAllPlants();
     }
 }

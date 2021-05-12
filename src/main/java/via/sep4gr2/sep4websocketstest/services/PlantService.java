@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface PlantService
 {
-    void insertPlant(DimPlant dimPlant);
-    List<EDWDimPlant> getAllPlants();
+    int insertPlant(DimPlant dimPlant);
+    List<DimPlant> getAllPlants();
 }

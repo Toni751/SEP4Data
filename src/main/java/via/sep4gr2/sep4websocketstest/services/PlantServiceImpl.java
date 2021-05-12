@@ -7,7 +7,6 @@ import via.sep4gr2.sep4websocketstest.models.databaseEDW.EDWDimPlant;
 import via.sep4gr2.sep4websocketstest.repositories.DimPlantRepository;
 import via.sep4gr2.sep4websocketstest.repositories.edw.EdwDimPlantRepository;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
 @Service
@@ -20,13 +19,15 @@ public class PlantServiceImpl implements PlantService
     private EdwDimPlantRepository edwDimPlantRepository;
 
     @Override
-    public void insertPlant(DimPlant dimPlant)
+    public int insertPlant(DimPlant dimPlant)
     {
-        dimPlantRepository.save(dimPlant);
+        DimPlant savedPlant = dimPlantRepository.save(dimPlant);
+        return savedPlant.getPlant_ID();
     }
 
     @Override
-    public List<EDWDimPlant> getAllPlants() {
-        return edwDimPlantRepository.findAll();
+    public List<DimPlant> getAllPlants() {
+        //return edwDimPlantRepository.findAll();
+        return dimPlantRepository.findAll();
     }
 }
