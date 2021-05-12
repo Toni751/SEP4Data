@@ -7,7 +7,10 @@ import via.sep4gr2.sep4websocketstest.models.database.FactPlantStatusId;
 
 import java.util.List;
 
-public interface FactPlantStatusRepository extends JpaRepository<FactPlantStatus, FactPlantStatusId> {
-    @Query("SELECT measurement_value FROM FactPlantStatus where measurement_type=(:measurement)")
-    float getMeasurement(String measurement);
+public interface FactPlantStatusRepository extends JpaRepository<FactPlantStatus, FactPlantStatusId>
+{
+    @Query("SELECT measurement_value FROM FactPlantStatus where measurement_type=(:measurement) and plant_ID=(:id)")
+    double getMeasurement(String measurement, int id);
+
+    @Query("SELECT measurement_value FROM FactPlantStatus where measurement_type=(:measurement) ")
 }

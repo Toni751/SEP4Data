@@ -11,13 +11,19 @@ public class MeasurementServiceImpl implements MeasurementService
     private FactPlantStatusRepository factPlantStatusRepository;
 
     @Override
-    public float getLatestTemperature()
+    public double getLatestTemperature()
     {
         return 0;
     }
 
     @Override
-    public List<String> getTemperatureHistory()
+    public double getAverageTemperature()
+    {
+        return 0;
+    }
+
+    @Override
+    public List<Double> getTemperatureHistory()
     {
         return null;
     }

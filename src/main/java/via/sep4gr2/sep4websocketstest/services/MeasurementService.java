@@ -4,7 +4,9 @@ import java.util.List;
 
 public interface MeasurementService
 {
-    float getLatestTemperature();
+    double getLatestTemperature();
 
-    List<String> getTemperatureHistory();
+    double getAverageTemperature();
+
+    List<Double> getTemperatureHistory();
 }
