@@ -1,28 +1,26 @@
 package via.sep4gr2.sep4websocketstest.models.databaseEDW;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 @Entity
 @Table(name = "FactPlantStatus", schema = "edw")
-@IdClass(FactPlantStatusId.class)
-public class FactPlantStatus
+@IdClass(EDWFactPlantStatusId.class)
+public class EDWFactPlantStatus
 {
     @ManyToOne
     @Id
     @JoinColumn(name = "P_ID", referencedColumnName = "P_ID")
-    private DimPlant plant_ID;
+    private EDWDimPlant plant_ID;
 
     @ManyToOne
     @Id
     @JoinColumn(name = "D_ID", referencedColumnName = "D_ID")
-    private DimDate D_ID;
+    private EDWDimDate D_ID;
 
     @ManyToOne
     @Id
     @JoinColumn(name = "T_ID", referencedColumnName = "T_ID")
-    private DimTime T_ID;
+    private EDWDimTime T_ID;
 
 
     private double MeasurementValue;
@@ -38,12 +36,12 @@ public class FactPlantStatus
         this.MeasurementType = measurement_type;
     }
 
-    public DimPlant getPlant_ID()
+    public EDWDimPlant getPlant_ID()
     {
         return plant_ID;
     }
 
-    public void setPlant_ID(DimPlant plant_ID)
+    public void setPlant_ID(EDWDimPlant plant_ID)
     {
         this.plant_ID = plant_ID;
     }
@@ -53,22 +51,22 @@ public class FactPlantStatus
         return MeasurementValue;
     }
 
-    public DimDate getD_ID()
+    public EDWDimDate getD_ID()
     {
         return D_ID;
     }
 
-    public void setD_ID(DimDate d_ID)
+    public void setD_ID(EDWDimDate d_ID)
     {
         D_ID = d_ID;
     }
 
-    public DimTime getT_ID()
+    public EDWDimTime getT_ID()
     {
         return T_ID;
     }
 
-    public void setT_ID(DimTime t_ID)
+    public void setT_ID(EDWDimTime t_ID)
     {
         T_ID = t_ID;
     }

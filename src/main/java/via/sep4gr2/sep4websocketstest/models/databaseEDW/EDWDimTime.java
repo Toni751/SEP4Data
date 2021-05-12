@@ -5,7 +5,7 @@ import java.time.LocalTime;
 
 @Entity
 @Table(name = "DimTime", schema = "edw")
-public class DimTime
+public class EDWDimTime
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

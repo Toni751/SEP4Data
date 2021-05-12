@@ -1,21 +1,19 @@
 package via.sep4gr2.sep4websocketstest.models.databaseEDW;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Objects;
 
-public class FactPlantStatusId implements Serializable
+public class EDWFactPlantStatusId implements Serializable
 {
     private int P_ID;
     private int D_ID;
     private int T_ID;
 
-    public FactPlantStatusId()
+    public EDWFactPlantStatusId()
     {
     }
 
-    public FactPlantStatusId(int p_ID, int d_ID, int t_ID)
+    public EDWFactPlantStatusId(int p_ID, int d_ID, int t_ID)
     {
         P_ID = p_ID;
         D_ID = d_ID;
@@ -57,7 +55,7 @@ public class FactPlantStatusId implements Serializable
     {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        FactPlantStatusId that = (FactPlantStatusId) o;
+        EDWFactPlantStatusId that = (EDWFactPlantStatusId) o;
         return P_ID == that.P_ID && D_ID == that.D_ID && T_ID == that.T_ID;
     }
 

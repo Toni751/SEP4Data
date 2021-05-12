@@ -1,16 +1,24 @@
 package via.sep4gr2.sep4websocketstest.repositories;
 
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import via.sep4gr2.sep4websocketstest.models.database.FactPlantStatus;
-import via.sep4gr2.sep4websocketstest.models.database.FactPlantStatusId;
+import via.sep4gr2.sep4websocketstest.models.databaseEDW.EDWFactPlantStatus;
+import via.sep4gr2.sep4websocketstest.models.databaseEDW.EDWFactPlantStatusId;
 
 import java.util.List;
 
-public interface FactPlantStatusRepository extends JpaRepository<FactPlantStatus, FactPlantStatusId>
+public interface FactPlantStatusRepository extends JpaRepository<EDWFactPlantStatus, EDWFactPlantStatusId>
 {
-    @Query("SELECT measurement_value FROM FactPlantStatus where measurement_type=(:measurement) and plant_ID=(:id)")
-    double getMeasurement(String measurement, int id);
+    /*@Query("SELECT MeasurementValue FROM EDWFactPlantStatus WHERE plant_ID IN (SELECT P_ID FROM EDWDimPlant " +
+            "WHERE plant_ID = (:id)) and MeasurementType=(:measurement) ")
+    List<Double> getMeasurement(String measurement, int id);*/
 
-    @Query("SELECT measurement_value FROM FactPlantStatus where measurement_type=(:measurement) ")
+    @Query("SELECT MeasurementValue FROM EDWFactPlantStatus WHERE plant_ID IN (SELECT P_ID FROM EDWDimPlant " +
+            "WHERE plant_ID = (:id)) and MeasurementType=(:measurement) ")
+    List<Double> getMeasurementHistory(String measurement, int id);
+
+    @Query("SELECT AVG(MeasurementValue) FROM EDWFactPlantStatus WHERE plant_ID IN (SELECT P_ID FROM EDWDimPlant " +
+            "WHERE plant_ID = (:id)) and MeasurementType=(:type) ")
+    double getAverageMeasurement(String type, int id);
 }

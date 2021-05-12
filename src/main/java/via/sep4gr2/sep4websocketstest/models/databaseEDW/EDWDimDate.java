@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "DimDate", schema = "edw")
-public class DimDate
+public class EDWDimDate
 {
 
     @Id

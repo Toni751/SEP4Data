@@ -9,7 +9,7 @@ import java.util.List;
 public interface DimPlantRepository extends JpaRepository<DimPlant, Integer> {
 
     // here it may be just ":sensorIds", without the (), not sure
-    @Query("SELECT p FROM DimPlant p WHERE p.sensor_ID IN (:sensorIds)")
+    @Query("SELECT p FROM EDWDimPlant p WHERE p.sensor_ID IN (:sensorIds)")
     List<DimPlant> findPlantsBySensorIds(List<Integer> sensorIds);
 
 }
