@@ -1,7 +1,5 @@
 package via.sep4gr2.sep4websocketstest.services;
 
-import via.sep4gr2.sep4websocketstest.models.database.DimGarden;
-import via.sep4gr2.sep4websocketstest.models.database.DimPlant;
 import via.sep4gr2.sep4websocketstest.models.restnetworking.GardenNetworking;
 import via.sep4gr2.sep4websocketstest.models.restnetworking.PlantNetworking;
 

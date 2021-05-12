@@ -2,7 +2,6 @@ package via.sep4gr2.sep4websocketstest.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import via.sep4gr2.sep4websocketstest.models.database.DimGarden;
 import via.sep4gr2.sep4websocketstest.repositories.DimGardenRepository;
 
 import java.util.List;

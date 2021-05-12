@@ -5,10 +5,12 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "dim_plant", schema = "stage")
-public class DimPlant {
+public class DimPlant
+{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int plant_ID;
+    private String garden_name;
     private int height;
     private int width;
     private String stage_of_growth;
@@ -25,91 +27,123 @@ public class DimPlant {
     private String common_plant_name;
     private String category_name;
 
-    public int getPlant_ID() {
+    public String getGarden_name()
+    {
+        return garden_name;
+    }
+
+    public void setGarden_name(String garden_name)
+    {
+        this.garden_name = garden_name;
+    }
+
+    public int getPlant_ID()
+    {
         return plant_ID;
     }
 
-    public void setPlant_ID(int plant_ID) {
+    public void setPlant_ID(int plant_ID)
+    {
         this.plant_ID = plant_ID;
     }
 
-    public int getHeight() {
+    public int getHeight()
+    {
         return height;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(int height)
+    {
         this.height = height;
     }
 
-    public int getWidth() {
+    public int getWidth()
+    {
         return width;
     }
 
-    public void setWidth(int width) {
+    public void setWidth(int width)
+    {
         this.width = width;
     }
 
-    public String getStage_of_growth() {
+    public String getStage_of_growth()
+    {
         return stage_of_growth;
     }
 
-    public void setStage_of_growth(String stage_of_growth) {
+    public void setStage_of_growth(String stage_of_growth)
+    {
         this.stage_of_growth = stage_of_growth;
     }
 
-    public String getSoil_type() {
+    public String getSoil_type()
+    {
         return soil_type;
     }
 
-    public void setSoil_type(String soil_type) {
+    public void setSoil_type(String soil_type)
+    {
         this.soil_type = soil_type;
     }
 
-    public int getOwn_soil_volume() {
+    public int getOwn_soil_volume()
+    {
         return own_soil_volume;
     }
 
-    public void setOwn_soil_volume(int own_soil_volume) {
+    public void setOwn_soil_volume(int own_soil_volume)
+    {
         this.own_soil_volume = own_soil_volume;
     }
 
-    public String getGarden_location() {
+    public String getGarden_location()
+    {
         return garden_location;
     }
 
-    public void setGarden_location(String garden_location) {
+    public void setGarden_location(String garden_location)
+    {
         this.garden_location = garden_location;
     }
 
-    public LocalDate getSeeded_at() {
+    public LocalDate getSeeded_at()
+    {
         return seeded_at;
     }
 
-    public void setSeeded_at(LocalDate seeded_at) {
+    public void setSeeded_at(LocalDate seeded_at)
+    {
         this.seeded_at = seeded_at;
     }
 
-    public LocalDate getHarvested_at() {
+    public LocalDate getHarvested_at()
+    {
         return harvested_at;
     }
 
-    public void setHarvested_at(LocalDate harvested_at) {
+    public void setHarvested_at(LocalDate harvested_at)
+    {
         this.harvested_at = harvested_at;
     }
 
-    public String getCommon_plant_name() {
+    public String getCommon_plant_name()
+    {
         return common_plant_name;
     }
 
-    public void setCommon_plant_name(String common_plant_name) {
+    public void setCommon_plant_name(String common_plant_name)
+    {
         this.common_plant_name = common_plant_name;
     }
 
-    public String getCategory_name() {
+    public String getCategory_name()
+    {
         return category_name;
     }
 
-    public void setCategory_name(String category_name) {
+    public void setCategory_name(String category_name)
+    {
         this.category_name = category_name;
     }
 }
