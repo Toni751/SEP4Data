@@ -38,6 +38,13 @@ jobs:
           java-version: "11"
           distribution: "adopt" # one of the supported Java distributions
 
+      - name: Cache Maven packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
       - name: Build and package
         # The following command will execute mvn (Maven) validate, compile, test,
         # package and verify commands. A good explaination of the Maven's project
