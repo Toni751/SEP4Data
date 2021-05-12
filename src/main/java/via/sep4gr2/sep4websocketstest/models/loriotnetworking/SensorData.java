@@ -7,6 +7,24 @@ public class SensorData {
     private int temperature;
     private int light;
     private int co2;
+    private int plantId;
+    private int gardenId;
+
+    public int getPlantId() {
+        return plantId;
+    }
+
+    public void setPlantId(int plantId) {
+        this.plantId = plantId;
+    }
+
+    public int getGardenId() {
+        return gardenId;
+    }
+
+    public void setGardenId(int gardenId) {
+        this.gardenId = gardenId;
+    }
 
     public String getSource() {
         return source;
@@ -65,6 +83,8 @@ public class SensorData {
                 ", temperature=" + temperature +
                 ", light=" + light +
                 ", co2=" + co2 +
+                ", plantId=" + plantId +
+                ", gardenId=" + gardenId +
                 '}';
     }
 }

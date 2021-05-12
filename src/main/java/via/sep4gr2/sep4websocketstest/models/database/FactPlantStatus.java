@@ -14,7 +14,6 @@ public class FactPlantStatus
     @JoinColumn(name = "plant_ID", referencedColumnName = "plant_ID")
     private DimPlant plant_ID;
 
-
     @Id
     @Column(columnDefinition = "DATE")
     private LocalDate status_date;

@@ -10,7 +10,7 @@ public class EDWFactPlantStatus
     @ManyToOne
     @Id
     @JoinColumn(name = "P_ID", referencedColumnName = "P_ID")
-    private EDWDimPlant plant_ID;
+    private EDWDimPlant P_ID;
 
     @ManyToOne
     @Id
@@ -36,14 +36,14 @@ public class EDWFactPlantStatus
         this.MeasurementType = measurement_type;
     }
 
-    public EDWDimPlant getPlant_ID()
+    public EDWDimPlant getP_ID()
     {
-        return plant_ID;
+        return P_ID;
     }
 
-    public void setPlant_ID(EDWDimPlant plant_ID)
+    public void setP_ID(EDWDimPlant p_ID)
     {
-        this.plant_ID = plant_ID;
+        this.P_ID = p_ID;
     }
 
     public double getMeasurementValue()

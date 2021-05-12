@@ -13,6 +13,7 @@ import java.beans.PropertyChangeEvent;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.TimeZone;
 import org.apache.commons.codec.binary.Hex;
 
@@ -62,28 +63,33 @@ public class LoriotControllerImpl implements LoriotController{
         String formatted = formatter.format(triggerTime);
 
         //data
+        System.out.println("Splitting message with data " + message.getData());
         Iterable<String> result = Splitter.fixedLength(4).split(message.getData());
         String[] parts = Iterables.toArray(result, String.class);
+        System.out.println("Got message data parts " + Arrays.toString(parts));
 
-        String tempSHex = parts[0];
-        String humSHex = parts[1];
+        String humSHex = parts[0];
+        String tempSHex = parts[1];
         String co2Hex = parts[2];
-        String soundHex = parts[3];
-
+        String lightHex = parts[3];
+        String plantId = parts[4];
+        String gardenId = parts[5];
 
         int temp = Integer.parseInt(tempSHex, 16);
-        int tempR = temp / 10;
+        int tempR = temp / 100;
         int hum = Integer.parseInt(humSHex, 16);
-        int humR = hum / 10;
         int co2 = Integer.parseInt(co2Hex, 16);
-        int soundR = Integer.parseInt(soundHex, 16);
-        int light = soundR / 10;
+        int lightR = Integer.parseInt(lightHex, 16);
+        int plantIdR = Integer.parseInt(plantId, 16);
+        int gardenIdR = Integer.parseInt(gardenId, 16);
 
         sensorData.setTimeStamp(formatted);
-        sensorData.setHumidity(humR);
+        sensorData.setHumidity(hum);
         sensorData.setTemperature(tempR);
         sensorData.setCo2(co2);
-        sensorData.setLight(light);
+        sensorData.setLight(lightR);
+        sensorData.setPlantId(plantIdR);
+        sensorData.setGardenId(gardenIdR);
 
         return sensorData;
     }
