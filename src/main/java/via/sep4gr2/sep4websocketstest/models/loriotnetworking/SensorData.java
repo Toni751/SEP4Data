@@ -1,14 +1,14 @@
 package via.sep4gr2.sep4websocketstest.models.loriotnetworking;
 
 public class SensorData {
-    private String source;
-    private String timeStamp;
+    private String date;
+    private String time;
     private int humidity;
     private int temperature;
     private int light;
     private int co2;
     private int plantId;
-    private int gardenId;
+
 
     public int getPlantId() {
         return plantId;
@@ -18,28 +18,20 @@ public class SensorData {
         this.plantId = plantId;
     }
 
-    public int getGardenId() {
-        return gardenId;
+    public String getTime() {
+        return time;
     }
 
-    public void setGardenId(int gardenId) {
-        this.gardenId = gardenId;
+    public void setTime(String time) {
+        this.time = time;
     }
 
-    public String getSource() {
-        return source;
+    public String getDate() {
+        return date;
     }
 
-    public void setSource(String source) {
-        this.source = source;
-    }
-
-    public String getTimeStamp() {
-        return timeStamp;
-    }
-
-    public void setTimeStamp(String timeStamp) {
-        this.timeStamp = timeStamp;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public int getHumidity() {
@@ -77,14 +69,13 @@ public class SensorData {
     @Override
     public String toString() {
         return "SensorData{" +
-                "source='" + source + '\'' +
-                ", timeStamp='" + timeStamp + '\'' +
+                ", date='" + date + '\'' +
+                ", time='" + time + '\'' +
                 ", humidity=" + humidity +
                 ", temperature=" + temperature +
                 ", light=" + light +
                 ", co2=" + co2 +
                 ", plantId=" + plantId +
-                ", gardenId=" + gardenId +
                 '}';
     }
 }

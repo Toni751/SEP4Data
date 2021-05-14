@@ -16,13 +16,15 @@ public class FactPlantStatus
 
     @Id
     @Column(columnDefinition = "DATE")
-    private LocalDate status_date;
+    private String status_date;
 
     @Id
     @Column(columnDefinition = "TIME")
-    private LocalTime status_time;
+    private String status_time;
 
     private double measurement_value;
+
+    @Id
     private String measurement_type;
 
     public String getMeasurement_type()
@@ -46,22 +48,22 @@ public class FactPlantStatus
     }
 
 
-    public LocalDate getStatus_date()
+    public String getStatus_date()
     {
         return status_date;
     }
 
-    public void setStatus_date(LocalDate status_date)
+    public void setStatus_date(String status_date)
     {
         this.status_date = status_date;
     }
 
-    public LocalTime getStatus_time()
+    public String getStatus_time()
     {
         return status_time;
     }
 
-    public void setStatus_time(LocalTime status_time)
+    public void setStatus_time(String status_time)
     {
         this.status_time = status_time;
     }

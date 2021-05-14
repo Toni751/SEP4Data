@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import via.sep4gr2.sep4websocketstest.models.database.DimPlant;
 import via.sep4gr2.sep4websocketstest.models.databaseEDW.EDWDimPlant;
+import via.sep4gr2.sep4websocketstest.models.restnetworking.PlantWithSensor;
 import via.sep4gr2.sep4websocketstest.services.PlantService;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class PlantController
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody
-    int insertPlant(@RequestBody DimPlant plant)
+    int insertPlant(@RequestBody PlantWithSensor plant)
     {
         try
         {

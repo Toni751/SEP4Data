@@ -8,18 +8,20 @@ import java.util.Objects;
 public class FactPlantStatusId implements Serializable
 {
     private int plant_ID;
-    private LocalDate status_date;
-    private LocalTime status_time;
+    private String status_date;
+    private String status_time;
+    private String measurement_type;
 
     public FactPlantStatusId()
     {
     }
 
-    public FactPlantStatusId(int plant_ID, LocalDate status_date, LocalTime status_time)
+    public FactPlantStatusId(int plant_ID, String status_date, String status_time, String measurement_type)
     {
         this.plant_ID = plant_ID;
         this.status_date = status_date;
         this.status_time = status_time;
+        this.measurement_type = measurement_type;
     }
 
     public int getPlant_ID()
@@ -28,14 +30,18 @@ public class FactPlantStatusId implements Serializable
     }
 
 
-    public LocalDate getStatus_date()
+    public String getStatus_date()
     {
         return status_date;
     }
 
-    public LocalTime getStatus_time()
+    public String getStatus_time()
     {
         return status_time;
+    }
+
+    public String getMeasurement_type() {
+        return measurement_type;
     }
 
     @Override
@@ -44,12 +50,12 @@ public class FactPlantStatusId implements Serializable
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FactPlantStatusId that = (FactPlantStatusId) o;
-        return plant_ID == that.plant_ID && status_date.equals(that.status_date) && status_time.equals(that.status_time);
+        return plant_ID == that.plant_ID && status_date.equals(that.status_date) && status_time.equals(that.status_time) && measurement_type.equals(that.measurement_type);
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(plant_ID, status_date, status_time);
+        return Objects.hash(plant_ID, status_date, status_time, measurement_type);
     }
 }

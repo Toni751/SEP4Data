@@ -2,7 +2,7 @@ package via.sep4gr2.sep4websocketstest.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import via.sep4gr2.sep4websocketstest.services.MeasurementService;
+import via.sep4gr2.sep4websocketstest.services.EdwMeasurementService;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import java.util.List;
 public class MeasurementController
 {
     @Autowired
-    private MeasurementService measurementService;
+    private EdwMeasurementService edwMeasurementService;
 
     @CrossOrigin(origins = "*")
     @GetMapping("/latest/{measurementType}/{id}")
@@ -20,7 +20,7 @@ public class MeasurementController
     {
         try
         {
-            return measurementService.getLatestMeasurement(measurementType, id);
+            return edwMeasurementService.getLatestMeasurement(measurementType, id);
         } catch (Exception e)
         {
             System.out.println(e.getMessage());
@@ -35,7 +35,7 @@ public class MeasurementController
     {
         try
         {
-            return measurementService.getAverage(measurementType, id);
+            return edwMeasurementService.getAverage(measurementType, id);
         } catch (Exception e)
         {
             System.out.println(e.getMessage());
@@ -50,7 +50,7 @@ public class MeasurementController
     {
         try
         {
-            return measurementService.getTemperatureHistory(measurementType, id);
+            return edwMeasurementService.getTemperatureHistory(measurementType, id);
         } catch (Exception e)
         {
             System.out.println(e.getMessage());
