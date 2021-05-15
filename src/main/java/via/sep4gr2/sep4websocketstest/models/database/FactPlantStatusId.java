@@ -1,47 +1,45 @@
 package via.sep4gr2.sep4websocketstest.models.database;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Objects;
 
 public class FactPlantStatusId implements Serializable
 {
-    private int plant_ID;
-    private String status_date;
-    private String status_time;
-    private String measurement_type;
+    private int plantID;
+    private String statusDate;
+    private String statusTime;
+    private String measurementType;
 
     public FactPlantStatusId()
     {
     }
 
-    public FactPlantStatusId(int plant_ID, String status_date, String status_time, String measurement_type)
+    public FactPlantStatusId(int plantID, String statusDate, String statusTime, String measurementType)
     {
-        this.plant_ID = plant_ID;
-        this.status_date = status_date;
-        this.status_time = status_time;
-        this.measurement_type = measurement_type;
+        this.plantID = plantID;
+        this.statusDate = statusDate;
+        this.statusTime = statusTime;
+        this.measurementType = measurementType;
     }
 
-    public int getPlant_ID()
+    public int getPlantID()
     {
-        return plant_ID;
+        return plantID;
     }
 
 
-    public String getStatus_date()
+    public String getStatusDate()
     {
-        return status_date;
+        return statusDate;
     }
 
-    public String getStatus_time()
+    public String getStatusTime()
     {
-        return status_time;
+        return statusTime;
     }
 
-    public String getMeasurement_type() {
-        return measurement_type;
+    public String getMeasurementType() {
+        return measurementType;
     }
 
     @Override
@@ -50,12 +48,12 @@ public class FactPlantStatusId implements Serializable
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FactPlantStatusId that = (FactPlantStatusId) o;
-        return plant_ID == that.plant_ID && status_date.equals(that.status_date) && status_time.equals(that.status_time) && measurement_type.equals(that.measurement_type);
+        return plantID == that.plantID && statusDate.equals(that.statusDate) && statusTime.equals(that.statusTime) && measurementType.equals(that.measurementType);
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(plant_ID, status_date, status_time, measurement_type);
+        return Objects.hash(plantID, statusDate, statusTime, measurementType);
     }
 }

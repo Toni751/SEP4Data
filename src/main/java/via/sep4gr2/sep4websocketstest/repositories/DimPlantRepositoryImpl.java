@@ -5,7 +5,6 @@ import via.sep4gr2.sep4websocketstest.models.database.DimPlant;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
 @Repository
 public class DimPlantRepositoryImpl
@@ -18,18 +17,18 @@ public class DimPlantRepositoryImpl
     {
         entityManager.getTransaction().begin();
         entityManager.createNativeQuery("INSERT INTO stage.DimPlant values (?,?,?,?,?,?,?,?,?,?,?,?)")
-                .setParameter(1, plant.getPlant_ID())
-                .setParameter(2, plant.getGarden_name())
+                .setParameter(1, plant.getPlantID())
+                .setParameter(2, plant.getGardenName())
                 .setParameter(3, plant.getHeight())
                 .setParameter(4, plant.getWidth())
-                .setParameter(5, plant.getStage_of_growth())
-                .setParameter(6, plant.getSoil_type())
-                .setParameter(7, plant.getOwn_soil_volume())
-                .setParameter(8, plant.getGarden_location())
-                .setParameter(9, plant.getSeeded_at())
-                .setParameter(10, plant.getHarvested_at())
-                .setParameter(11, plant.getCommon_plant_name())
-                .setParameter(12, plant.getCategory_name()).executeUpdate();
+                .setParameter(5, plant.getStageOfGrowth())
+                .setParameter(6, plant.getSoilType())
+                .setParameter(7, plant.getOwnSoilVolume())
+                .setParameter(8, plant.getGardenLocation())
+                .setParameter(9, plant.getSeededAt())
+                .setParameter(10, plant.getHarvestedAt())
+                .setParameter(11, plant.getCommonPlantName())
+                .setParameter(12, plant.getCategoryName()).executeUpdate();
         entityManager.getTransaction().commit();
 
     }

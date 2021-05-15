@@ -1,25 +1,25 @@
 package via.sep4gr2.sep4websocketstest.models.restnetworking;
 
 public class Sensor {
-    private int light_sensor_id;
-    private int co2_sensor_id;
-    private int temp_humidity_sensor_id;
+    private int lightSensorId;
+    private int co2SensorId;
+    private int tempHumiditySensorId;
 
-    public Sensor(int light_sensor_id, int co2_sensor_id, int temp_humidity_sensor_id) {
-        this.light_sensor_id = light_sensor_id;
-        this.co2_sensor_id = co2_sensor_id;
-        this.temp_humidity_sensor_id = temp_humidity_sensor_id;
+    public Sensor(int lightSensorId, int co2SensorId, int tempHumiditySensorId) {
+        this.lightSensorId = lightSensorId;
+        this.co2SensorId = co2SensorId;
+        this.tempHumiditySensorId = tempHumiditySensorId;
     }
 
-    public int getLight_sensor_id() {
-        return light_sensor_id;
+    public int getLightSensorId() {
+        return lightSensorId;
     }
 
-    public int getCo2_sensor_id() {
-        return co2_sensor_id;
+    public int getCo2SensorId() {
+        return co2SensorId;
     }
 
-    public int getTemp_humidity_sensor_id() {
-        return temp_humidity_sensor_id;
+    public int getTempHumiditySensorId() {
+        return tempHumiditySensorId;
     }
 }

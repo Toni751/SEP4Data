@@ -1,8 +1,6 @@
 package via.sep4gr2.sep4websocketstest.models.database;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 @Entity
 @Table(name = "fact_plant_status", schema = "stage")
@@ -12,69 +10,82 @@ public class FactPlantStatus
     @ManyToOne
     @Id
     @JoinColumn(name = "plant_ID", referencedColumnName = "plant_ID")
-    private DimPlant plant_ID;
+    private DimPlant plantID;
 
     @Id
-    @Column(columnDefinition = "DATE")
-    private String status_date;
+    @Column(name = "status_date", columnDefinition = "DATE")
+    private String statusDate;
 
     @Id
-    @Column(columnDefinition = "TIME")
-    private String status_time;
+    @Column(name = "status_time", columnDefinition = "TIME")
+    private String statusTime;
 
-    private double measurement_value;
+    @Column(name = "measurement_value")
+    private double measurementValue;
 
     @Id
-    private String measurement_type;
+    @Column(name = "measurement_type")
+    private String measurementType;
 
-    public String getMeasurement_type()
+    public String getMeasurementType()
     {
-        return measurement_type;
+        return measurementType;
     }
 
-    public void setMeasurement_type(String measurement_type)
+    public void setMeasurementType(String measurement_type)
     {
-        this.measurement_type = measurement_type;
+        this.measurementType = measurement_type;
     }
 
-    public DimPlant getPlant_ID()
+    public DimPlant getPlantID()
     {
-        return plant_ID;
+        return plantID;
     }
 
-    public void setPlant_ID(DimPlant plant_ID)
+    public void setPlantID(DimPlant plant_ID)
     {
-        this.plant_ID = plant_ID;
+        this.plantID = plant_ID;
     }
 
 
-    public String getStatus_date()
+    public String getStatusDate()
     {
-        return status_date;
+        return statusDate;
     }
 
-    public void setStatus_date(String status_date)
+    public void setStatusDate(String status_date)
     {
-        this.status_date = status_date;
+        this.statusDate = status_date;
     }
 
-    public String getStatus_time()
+    public String getStatusTime()
     {
-        return status_time;
+        return statusTime;
     }
 
-    public void setStatus_time(String status_time)
+    public void setStatusTime(String status_time)
     {
-        this.status_time = status_time;
+        this.statusTime = status_time;
     }
 
-    public double getMeasurement_value()
+    public double getMeasurementValue()
     {
-        return measurement_value;
+        return measurementValue;
     }
 
-    public void setMeasurement_value(double measurement_value)
+    public void setMeasurementValue(double measurement_value)
     {
-        this.measurement_value = measurement_value;
+        this.measurementValue = measurement_value;
+    }
+
+    @Override
+    public String toString() {
+        return "FactPlantStatus{" +
+                "plant_ID=" + plantID +
+                ", status_date='" + statusDate + '\'' +
+                ", status_time='" + statusTime + '\'' +
+                ", measurement_value=" + measurementValue +
+                ", measurement_type='" + measurementType + '\'' +
+                '}';
     }
 }

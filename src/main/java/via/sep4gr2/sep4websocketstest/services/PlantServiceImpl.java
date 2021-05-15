@@ -27,12 +27,12 @@ public class PlantServiceImpl implements PlantService
     public int insertPlant(PlantWithSensor plantWithSensor)
     {
         DimPlant savedPlant = dimPlantRepository.save(plantWithSensor.getPlant());
-        int plantId = savedPlant.getPlant_ID();
+        int plantId = savedPlant.getPlantID();
         String finalString = "";
         finalString += convertIntTo4DigitHexString(plantId);
-        finalString += convertIntTo4DigitHexString(plantWithSensor.getSensor().getTemp_humidity_sensor_id());
-        finalString += convertIntTo4DigitHexString(plantWithSensor.getSensor().getLight_sensor_id());
-        finalString += convertIntTo4DigitHexString(plantWithSensor.getSensor().getCo2_sensor_id());
+        finalString += convertIntTo4DigitHexString(plantWithSensor.getSensor().getTempHumiditySensorId());
+        finalString += convertIntTo4DigitHexString(plantWithSensor.getSensor().getLightSensorId());
+        finalString += convertIntTo4DigitHexString(plantWithSensor.getSensor().getCo2SensorId());
         loriotController.send(new Command(finalString, 2));
         return plantId;
     }

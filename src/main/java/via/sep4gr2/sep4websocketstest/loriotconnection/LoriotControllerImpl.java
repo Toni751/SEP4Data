@@ -3,7 +3,6 @@ package via.sep4gr2.sep4websocketstest.loriotconnection;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Iterables;
 import com.google.gson.Gson;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import via.sep4gr2.sep4websocketstest.models.database.DimPlant;
 import via.sep4gr2.sep4websocketstest.models.database.FactPlantStatus;
@@ -14,14 +13,13 @@ import via.sep4gr2.sep4websocketstest.models.loriotnetworking.UpLinkMessage;
 
 import java.beans.PropertyChangeEvent;
 import java.time.Instant;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.TimeZone;
-import org.apache.commons.codec.binary.Hex;
+
 import via.sep4gr2.sep4websocketstest.repositories.DimPlantRepository;
 import via.sep4gr2.sep4websocketstest.services.MeasurementService;
 
@@ -68,38 +66,38 @@ public class LoriotControllerImpl implements LoriotController{
 
         if(sensorData.getTemperature() > 0){
             FactPlantStatus plantStatus = new FactPlantStatus();
-            plantStatus.setPlant_ID(plant);
-            plantStatus.setStatus_date(sensorData.getDate());
-            plantStatus.setStatus_time(sensorData.getTime());
-            plantStatus.setMeasurement_type("TEMP");
-            plantStatus.setMeasurement_value(sensorData.getTemperature());
+            plantStatus.setPlantID(plant);
+            plantStatus.setStatusDate(sensorData.getDate());
+            plantStatus.setStatusTime(sensorData.getTime());
+            plantStatus.setMeasurementType("TEMP");
+            plantStatus.setMeasurementValue(sensorData.getTemperature());
             statuses.add(plantStatus);
         }
         if(sensorData.getHumidity() > 0){
             FactPlantStatus plantStatus = new FactPlantStatus();
-            plantStatus.setPlant_ID(plant);
-            plantStatus.setStatus_date(sensorData.getDate());
-            plantStatus.setStatus_time(sensorData.getTime());
-            plantStatus.setMeasurement_type("HUM");
-            plantStatus.setMeasurement_value(sensorData.getHumidity());
+            plantStatus.setPlantID(plant);
+            plantStatus.setStatusDate(sensorData.getDate());
+            plantStatus.setStatusTime(sensorData.getTime());
+            plantStatus.setMeasurementType("HUM");
+            plantStatus.setMeasurementValue(sensorData.getHumidity());
             statuses.add(plantStatus);
         }
         if(sensorData.getLight() > 0){
             FactPlantStatus plantStatus = new FactPlantStatus();
-            plantStatus.setPlant_ID(plant);
-            plantStatus.setStatus_date(sensorData.getDate());
-            plantStatus.setStatus_time(sensorData.getTime());
-            plantStatus.setMeasurement_type("LIGHT");
-            plantStatus.setMeasurement_value(sensorData.getLight());
+            plantStatus.setPlantID(plant);
+            plantStatus.setStatusDate(sensorData.getDate());
+            plantStatus.setStatusTime(sensorData.getTime());
+            plantStatus.setMeasurementType("LIGHT");
+            plantStatus.setMeasurementValue(sensorData.getLight());
             statuses.add(plantStatus);
         }
         if(sensorData.getCo2() > 0){
             FactPlantStatus plantStatus = new FactPlantStatus();
-            plantStatus.setPlant_ID(plant);
-            plantStatus.setStatus_date(sensorData.getDate());
-            plantStatus.setStatus_time(sensorData.getTime());
-            plantStatus.setMeasurement_type("CO2");
-            plantStatus.setMeasurement_value(sensorData.getCo2());
+            plantStatus.setPlantID(plant);
+            plantStatus.setStatusDate(sensorData.getDate());
+            plantStatus.setStatusTime(sensorData.getTime());
+            plantStatus.setMeasurementType("CO2");
+            plantStatus.setMeasurementValue(sensorData.getCo2());
             statuses.add(plantStatus);
         }
         System.out.println("Statues length " + statuses.size());

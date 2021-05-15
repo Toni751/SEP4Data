@@ -21,26 +21,22 @@ public class LoriotWebSocketClient implements WebSocket.Listener, PropertyChange
     }
 
     public LoriotWebSocketClient() {
-        System.out.println("Here1");
         HttpClient client = HttpClient.newHttpClient();
-        System.out.println("Here2");
         CompletableFuture<WebSocket> ws = client.newWebSocketBuilder()
                 .buildAsync(URI.create(SERVER_URL), this);
-        System.out.println("Here3");
         boolean succeededToJoin = false;
         int attemptCounter = 0;
         while (!succeededToJoin && attemptCounter < 20) {
             try{
-                System.out.println("\tAttempting to join");
+                System.out.println("\tAttempting to join websocket server");
                 attemptCounter++;
                 server = ws.join();
-                System.out.println("\t\t\tJoined successfully");
+                System.out.println("\t\t\tJoined successfully websocket server");
                 succeededToJoin = true;
             } catch (Exception e) {
                 System.out.println("Caught exception " + e);
             }
         }
-        System.out.println("Here4");
     }
 
     //onOpen()
