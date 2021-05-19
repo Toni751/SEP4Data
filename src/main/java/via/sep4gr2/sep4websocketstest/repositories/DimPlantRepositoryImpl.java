@@ -13,23 +13,23 @@ public class DimPlantRepositoryImpl
     private EntityManager entityManager;
 
 
-    public void insertPlant(DimPlant plant)
-    {
-        entityManager.getTransaction().begin();
-        entityManager.createNativeQuery("INSERT INTO stage.DimPlant values (?,?,?,?,?,?,?,?,?,?,?,?)")
-                .setParameter(1, plant.getPlantID())
-                .setParameter(2, plant.getGardenName())
-                .setParameter(3, plant.getHeight())
-                .setParameter(4, plant.getWidth())
-                .setParameter(5, plant.getStageOfGrowth())
-                .setParameter(6, plant.getSoilType())
-                .setParameter(7, plant.getOwnSoilVolume())
-                .setParameter(8, plant.getGardenLocation())
-                .setParameter(9, plant.getSeededAt())
-                .setParameter(10, plant.getHarvestedAt())
-                .setParameter(11, plant.getCommonPlantName())
-                .setParameter(12, plant.getCategoryName()).executeUpdate();
-        entityManager.getTransaction().commit();
-
-    }
+//    public void insertPlant(DimPlant plant)
+//    {
+//        entityManager.getTransaction().begin();
+//        entityManager.createNativeQuery("INSERT INTO stage.DimPlant values (?,?,?,?,?,?,?,?,?,?,?,?)")
+//                .setParameter(1, plant.getPlantID())
+//                .setParameter(2, plant.getGardenName())
+//                .setParameter(3, plant.getHeight())
+//                .setParameter(4, plant.getWidth())
+//                .setParameter(5, plant.getStageOfGrowth())
+//                .setParameter(6, plant.getSoilType())
+//                .setParameter(7, plant.getOwnSoilVolume())
+//                .setParameter(8, plant.getGardenLocation())
+//                .setParameter(9, plant.getSeededAt())
+//                .setParameter(10, plant.getHarvestedAt())
+//                .setParameter(11, plant.getCommonPlantName())
+//                .setParameter(12, plant.getCategoryName()).executeUpdate();
+//        entityManager.getTransaction().commit();
+//
+//    }
 }

@@ -16,7 +16,6 @@ public class DimPlant
     private String gardenName;
 
     private int height;
-    private int width;
 
     @Column(name = "stage_of_growth")
     private String stageOfGrowth;
@@ -70,16 +69,6 @@ public class DimPlant
     public void setHeight(int height)
     {
         this.height = height;
-    }
-
-    public int getWidth()
-    {
-        return width;
-    }
-
-    public void setWidth(int width)
-    {
-        this.width = width;
     }
 
     public String getStageOfGrowth()

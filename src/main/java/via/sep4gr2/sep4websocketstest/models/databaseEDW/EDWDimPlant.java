@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "DimPlant", schema = "edw")
+@Table(name = "dim_plant", schema = "edw")
 public class EDWDimPlant
 {
     @Id
@@ -13,7 +13,6 @@ public class EDWDimPlant
     private int plant_ID;
     private String garden_name;
     private int height;
-    private int width;
     private String stage_of_growth;
     private String soil_type;
     private int own_soil_volume;
@@ -88,16 +87,6 @@ public class EDWDimPlant
     public void setHeight(int height)
     {
         this.height = height;
-    }
-
-    public int getWidth()
-    {
-        return width;
-    }
-
-    public void setWidth(int width)
-    {
-        this.width = width;
     }
 
     public String getStage_of_growth()
