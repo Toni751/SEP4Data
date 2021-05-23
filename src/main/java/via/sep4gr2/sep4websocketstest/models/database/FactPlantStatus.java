@@ -24,17 +24,17 @@ public class FactPlantStatus
     private double measurementValue;
 
     @Id
-    @Column(name = "measurement_type")
-    private String measurementType;
+    @Column(name = "measurement_ID")
+    private String measurementID;
 
-    public String getMeasurementType()
+    public String getMeasurementID()
     {
-        return measurementType;
+        return measurementID;
     }
 
-    public void setMeasurementType(String measurement_type)
+    public void setMeasurementID(String measurement_id)
     {
-        this.measurementType = measurement_type;
+        this.measurementID = measurement_id;
     }
 
     public DimPlant getPlantID()
@@ -85,7 +85,7 @@ public class FactPlantStatus
                 ", status_date='" + statusDate + '\'' +
                 ", status_time='" + statusTime + '\'' +
                 ", measurement_value=" + measurementValue +
-                ", measurement_type='" + measurementType + '\'' +
+                ", measurement_type='" + measurementID + '\'' +
                 '}';
     }
 }
