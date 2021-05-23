@@ -9,4 +9,5 @@ public interface PlantService
 {
     int insertPlant(PlantWithSensor dimPlant);
     List<DimPlant> getAllPlants();
+    void deletePlant(int plantId);
 }

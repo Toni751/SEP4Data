@@ -39,4 +39,18 @@ public class PlantController
     List<DimPlant> getAllPlants(){
         return plantService.getAllPlants();
     }
+
+    @CrossOrigin(origins = "*")
+    @DeleteMapping(value = "/{id}")
+    public @ResponseBody
+    void removePlant(@PathVariable int id) {
+        try
+        {
+            plantService.deletePlant(id);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
 }

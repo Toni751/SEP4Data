@@ -52,4 +52,9 @@ public class PlantServiceImpl implements PlantService
         //return edwDimPlantRepository.findAll();
         return dimPlantRepository.findAll();
     }
+
+    @Override
+    public void deletePlant(int plantId) {
+        dimPlantRepository.deletePlant(plantId);
+    }
 }
