@@ -69,7 +69,7 @@ public class LoriotControllerImpl implements LoriotController{
             plantStatus.setPlantID(plant);
             plantStatus.setStatusDate(sensorData.getDate());
             plantStatus.setStatusTime(sensorData.getTime());
-            plantStatus.setMeasurementID("TEMP");
+            // plantStatus.setMeasurementID("TEMP");
             plantStatus.setMeasurementValue(sensorData.getTemperature());
             statuses.add(plantStatus);
         }
@@ -78,7 +78,7 @@ public class LoriotControllerImpl implements LoriotController{
             plantStatus.setPlantID(plant);
             plantStatus.setStatusDate(sensorData.getDate());
             plantStatus.setStatusTime(sensorData.getTime());
-            plantStatus.setMeasurementID("HUM");
+            // plantStatus.setMeasurementID("HUM");
             plantStatus.setMeasurementValue(sensorData.getHumidity());
             statuses.add(plantStatus);
         }
@@ -87,7 +87,7 @@ public class LoriotControllerImpl implements LoriotController{
             plantStatus.setPlantID(plant);
             plantStatus.setStatusDate(sensorData.getDate());
             plantStatus.setStatusTime(sensorData.getTime());
-            plantStatus.setMeasurementID("LIGHT");
+            // plantStatus.setMeasurementID("LIGHT");
             plantStatus.setMeasurementValue(sensorData.getLight());
             statuses.add(plantStatus);
         }
@@ -96,7 +96,7 @@ public class LoriotControllerImpl implements LoriotController{
             plantStatus.setPlantID(plant);
             plantStatus.setStatusDate(sensorData.getDate());
             plantStatus.setStatusTime(sensorData.getTime());
-            plantStatus.setMeasurementID("CO2");
+            // plantStatus.setMeasurementID("CO2");
             plantStatus.setMeasurementValue(sensorData.getCo2());
             statuses.add(plantStatus);
         }

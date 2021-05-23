@@ -8,18 +8,18 @@ public class FactPlantStatusId implements Serializable
     private int plantID;
     private String statusDate;
     private String statusTime;
-    private String measurementType;
+    private int measurementID;
 
     public FactPlantStatusId()
     {
     }
 
-    public FactPlantStatusId(int plantID, String statusDate, String statusTime, String measurementType)
+    public FactPlantStatusId(int plantID, String statusDate, String statusTime, int measurementID)
     {
         this.plantID = plantID;
         this.statusDate = statusDate;
         this.statusTime = statusTime;
-        this.measurementType = measurementType;
+        this.measurementID = measurementID;
     }
 
     public int getPlantID()
@@ -38,8 +38,8 @@ public class FactPlantStatusId implements Serializable
         return statusTime;
     }
 
-    public String getMeasurementType() {
-        return measurementType;
+    public int getMeasurementID() {
+        return measurementID;
     }
 
     @Override
@@ -48,12 +48,12 @@ public class FactPlantStatusId implements Serializable
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FactPlantStatusId that = (FactPlantStatusId) o;
-        return plantID == that.plantID && statusDate.equals(that.statusDate) && statusTime.equals(that.statusTime) && measurementType.equals(that.measurementType);
+        return plantID == that.plantID && statusDate.equals(that.statusDate) && statusTime.equals(that.statusTime) && measurementID == that.measurementID;
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(plantID, statusDate, statusTime, measurementType);
+        return Objects.hash(plantID, statusDate, statusTime, measurementID);
     }
 }

@@ -3,7 +3,7 @@ package via.sep4gr2.sep4websocketstest.models.databaseEDW;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "FactPlantStatus", schema = "edw")
+@Table(name = "fact_plant_status", schema = "edw")
 @IdClass(EDWFactPlantStatusId.class)
 public class EDWFactPlantStatus
 {
@@ -22,18 +22,21 @@ public class EDWFactPlantStatus
     @JoinColumn(name = "T_ID", referencedColumnName = "T_ID")
     private EDWDimTime T_ID;
 
+    @ManyToOne
+    @Id
+    @JoinColumn(name = "M_ID", referencedColumnName = "M_ID")
+    private EDWDimMeasurement M_ID;
 
     private double MeasurementValue;
-    private String MeasurementType;
 
-    public String getMeasurementType()
+    public EDWDimMeasurement getM_ID()
     {
-        return MeasurementType;
+        return M_ID;
     }
 
-    public void setMeasurementType(String measurement_type)
+    public void setM_ID(EDWDimMeasurement measurement_type)
     {
-        this.MeasurementType = measurement_type;
+        this.M_ID = measurement_type;
     }
 
     public EDWDimPlant getP_ID()

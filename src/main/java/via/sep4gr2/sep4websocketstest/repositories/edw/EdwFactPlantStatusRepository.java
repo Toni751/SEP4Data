@@ -10,15 +10,15 @@ import java.util.List;
 
 public interface EdwFactPlantStatusRepository extends JpaRepository<EDWFactPlantStatus, EDWFactPlantStatusId>
 {
-    /*@Query("SELECT MeasurementValue FROM EDWFactPlantStatus WHERE plant_ID IN (SELECT P_ID FROM EDWDimPlant " +
+    /* @Query("SELECT MeasurementValue FROM EDWFactPlantStatus WHERE plant_ID IN (SELECT P_ID FROM EDWDimPlant " +
             "WHERE plant_ID = (:id)) and MeasurementType=(:measurement) ")
-    List<Double> getMeasurement(String measurement, int id);*/
+    List<Double> getMeasurement(String measurement, int id); */
 
-    @Query("SELECT fs.MeasurementValue FROM EDWFactPlantStatus fs WHERE fs.P_ID IN (SELECT P_ID FROM EDWDimPlant " +
-            "WHERE plant_ID = (:id)) and fs.MeasurementType=(:measurement) ")
-    List<Double> getMeasurementHistory(String measurement, int id);
-
-    @Query("SELECT AVG(fs.MeasurementValue) FROM EDWFactPlantStatus fs WHERE fs.P_ID IN (SELECT P_ID FROM EDWDimPlant " +
-            "WHERE plant_ID = (:id)) and fs.MeasurementType=(:type) ")
-    double getAverageMeasurement(String type, int id);
+//    @Query("SELECT fs.MeasurementValue FROM EDWFactPlantStatus fs WHERE fs.P_ID IN (SELECT P_ID FROM EDWDimPlant " +
+//            "WHERE plant_ID = (:id)) and fs.MeasurementType=(:measurement) ")
+//    List<Double> getMeasurementHistory(String measurement, int id);
+//
+//    @Query("SELECT AVG(fs.MeasurementValue) FROM EDWFactPlantStatus fs WHERE fs.P_ID IN (SELECT P_ID FROM EDWDimPlant " +
+//            "WHERE plant_ID = (:id)) and fs.MeasurementType=(:type) ")
+//    double getAverageMeasurement(String type, int id);
 }

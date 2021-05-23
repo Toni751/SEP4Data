@@ -23,16 +23,17 @@ public class FactPlantStatus
     @Column(name = "measurement_value")
     private double measurementValue;
 
+    @ManyToOne
     @Id
-    @Column(name = "measurement_ID")
-    private String measurementID;
+    @JoinColumn(name = "measurement_ID", referencedColumnName = "measurement_ID")
+    private DimMeasurement measurementID;
 
-    public String getMeasurementID()
+    public DimMeasurement getMeasurementID()
     {
         return measurementID;
     }
 
-    public void setMeasurementID(String measurement_id)
+    public void setMeasurementID(DimMeasurement measurement_id)
     {
         this.measurementID = measurement_id;
     }
