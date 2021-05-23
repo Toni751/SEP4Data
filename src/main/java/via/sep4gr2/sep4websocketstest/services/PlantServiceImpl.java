@@ -4,16 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import via.sep4gr2.sep4websocketstest.loriotconnection.LoriotControllerImpl;
 import via.sep4gr2.sep4websocketstest.models.database.DimPlant;
-import via.sep4gr2.sep4websocketstest.models.loriotnetworking.Command;
-import via.sep4gr2.sep4websocketstest.models.restnetworking.PlantWithSensor;
 import via.sep4gr2.sep4websocketstest.repositories.DimPlantRepository;
+import via.sep4gr2.sep4websocketstest.repositories.FactPlantStatusRepository;
 import via.sep4gr2.sep4websocketstest.repositories.edw.EdwDimPlantRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
 public class PlantServiceImpl implements PlantService
 {
+    @Autowired
+    private FactPlantStatusRepository factPlantStatusRepository;
     @Autowired
     private DimPlantRepository dimPlantRepository;
 
@@ -24,37 +26,32 @@ public class PlantServiceImpl implements PlantService
     private LoriotControllerImpl loriotController;
 
     @Override
-    public int insertPlant(PlantWithSensor plantWithSensor)
+    public int insertPlant(DimPlant plant)
     {
-        DimPlant savedPlant = dimPlantRepository.save(plantWithSensor.getPlant());
+        DimPlant savedPlant = dimPlantRepository.save(plant);
         int plantId = savedPlant.getPlantID();
-        String finalString = "";
-        finalString += convertIntTo4DigitHexString(plantId);
-        finalString += convertIntTo4DigitHexString(plantWithSensor.getSensor().getTempHumiditySensorId());
-        finalString += convertIntTo4DigitHexString(plantWithSensor.getSensor().getLightSensorId());
-        finalString += convertIntTo4DigitHexString(plantWithSensor.getSensor().getCo2SensorId());
-        loriotController.send(new Command(finalString, 2));
         return plantId;
-    }
-
-    private String convertIntTo4DigitHexString(int integer){
-        String hex = Integer.toHexString(integer);
-        String string = "";
-        for (int i = 0; i < 4 - hex.length(); i++) {
-            string += "0";
-        }
-        string += hex;
-        return string;
     }
 
     @Override
     public List<DimPlant> getAllPlants() {
-        //return edwDimPlantRepository.findAll();
         return dimPlantRepository.findAll();
     }
 
     @Override
     public void deletePlant(int plantId) {
+        factPlantStatusRepository.deletePlant(plantId);
         dimPlantRepository.deletePlant(plantId);
     }
+
+    @Override
+    public List<DimPlant> getPlantsByGardenName(String gardenName) {
+        return dimPlantRepository.getDimPlantsByGardenName(gardenName);
+    }
+
+    @Override
+    public void updatePlant(int id, String gardenName, int height, String soilType, String stageOfGrowth, int ownSoilVolume, String gardenLocation, LocalDate harvestedAt, String commonPlantName, String categoryName) {
+        dimPlantRepository.updatePlant(id, gardenName, height, soilType, stageOfGrowth, ownSoilVolume, gardenLocation, harvestedAt, commonPlantName, categoryName);
+    }
+
 }

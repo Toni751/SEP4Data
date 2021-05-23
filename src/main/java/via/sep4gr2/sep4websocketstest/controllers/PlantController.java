@@ -21,7 +21,7 @@ public class PlantController
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody
-    int insertPlant(@RequestBody PlantWithSensor plant)
+    int insertPlant(@RequestBody DimPlant plant)
     {
         try
         {
@@ -47,6 +47,36 @@ public class PlantController
         try
         {
             plantService.deletePlant(id);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("/garden")
+    public @ResponseBody
+    List<DimPlant> getPlantsByGarden(@RequestParam String gardenName)
+    {
+        try
+        {
+            return plantService.getPlantsByGardenName(gardenName);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    @CrossOrigin(origins = "*")
+    @PutMapping(value = "/{id}")
+    public @ResponseBody
+    void updatePlant(@PathVariable int id, @RequestBody DimPlant plant)
+    {
+        try
+        {
+            plantService.updatePlant(id, plant.getGardenName(), plant.getHeight(),  plant.getSoilType(), plant.getStageOfGrowth(), plant.getOwnSoilVolume(), plant.getGardenLocation(), plant.getHarvestedAt(), plant.getCommonPlantName(), plant.getCategoryName());
         }
         catch (Exception e)
         {

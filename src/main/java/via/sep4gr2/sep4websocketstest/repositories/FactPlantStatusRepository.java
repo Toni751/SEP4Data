@@ -1,7 +1,9 @@
 package via.sep4gr2.sep4websocketstest.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 import via.sep4gr2.sep4websocketstest.models.database.DimMeasurement;
 import via.sep4gr2.sep4websocketstest.models.database.DimPlant;
 import via.sep4gr2.sep4websocketstest.models.database.FactPlantStatus;
@@ -23,4 +25,8 @@ public interface FactPlantStatusRepository extends JpaRepository<FactPlantStatus
 
 //    @Query("SELECT AVG(fs.measurement_value) FROM FactPlantStatus fs WHERE fs.plant_ID.plant_ID = (:id) and fs.measurement_type = (:measurement)")
 //    List<FactPlantStatus> getAverageMeasurement(String measurement, int id);
+    @Transactional
+    @Modifying
+    @Query("DELETE FROM FactPlantStatus p WHERE p.plantID.plantID = :id")
+    void deletePlant(int id);
 }
