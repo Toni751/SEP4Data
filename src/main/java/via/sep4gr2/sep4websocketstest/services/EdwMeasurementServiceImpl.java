@@ -55,7 +55,7 @@ public class EdwMeasurementServiceImpl implements EdwMeasurementService
         List<FactPlantStatus> factPlantStatuses = factPlantStatusRepository.getMeasurementHistoryForPlant(measurementType, plantId);
         List<Measurement> measurements = new ArrayList<>();
         for (FactPlantStatus fps: factPlantStatuses) {
-            measurements.add(new Measurement(fps.getStatusDate(), fps.getStatusTime(), fps.getMeasurementValue(), fps.getMeasurementType()));
+            measurements.add(new Measurement(fps.getStatusDate(), fps.getStatusTime(), fps.getMeasurementValue(), fps.getMeasurementID()));
         }
         return measurements;
     }
@@ -75,19 +75,19 @@ public class EdwMeasurementServiceImpl implements EdwMeasurementService
 //            measurements.add(new Measurement());
             fps = factPlantStatusRepository.findFirstByMeasurementTypeAndPlantID(measurementType, plantRepository.getPlantById(plantId));
             // System.out.println("Fps after query " + fps);
-            measurements.add(new Measurement(fps.getStatusDate(), fps.getStatusTime(), fps.getMeasurementValue(), fps.getMeasurementType()));
+            measurements.add(new Measurement(fps.getStatusDate(), fps.getStatusTime(), fps.getMeasurementValue(), fps.getMeasurementID()));
         } else {
             fps = factPlantStatusRepository.findFirstByMeasurementTypeAndPlantID("LIGHT", plantRepository.getPlantById(plantId));
-            measurements.add(new Measurement(fps.getStatusDate(), fps.getStatusTime(), fps.getMeasurementValue(), fps.getMeasurementType()));
+            measurements.add(new Measurement(fps.getStatusDate(), fps.getStatusTime(), fps.getMeasurementValue(), fps.getMeasurementID()));
 
             fps = factPlantStatusRepository.findFirstByMeasurementTypeAndPlantID("CO2", plantRepository.getPlantById(plantId));
-            measurements.add(new Measurement(fps.getStatusDate(), fps.getStatusTime(), fps.getMeasurementValue(), fps.getMeasurementType()));
+            measurements.add(new Measurement(fps.getStatusDate(), fps.getStatusTime(), fps.getMeasurementValue(), fps.getMeasurementID()));
 
             fps = factPlantStatusRepository.findFirstByMeasurementTypeAndPlantID("HUM", plantRepository.getPlantById(plantId));
-            measurements.add(new Measurement(fps.getStatusDate(), fps.getStatusTime(), fps.getMeasurementValue(), fps.getMeasurementType()));
+            measurements.add(new Measurement(fps.getStatusDate(), fps.getStatusTime(), fps.getMeasurementValue(), fps.getMeasurementID()));
 
             fps = factPlantStatusRepository.findFirstByMeasurementTypeAndPlantID("TEMP", plantRepository.getPlantById(plantId));
-            measurements.add(new Measurement(fps.getStatusDate(), fps.getStatusTime(), fps.getMeasurementValue(), fps.getMeasurementType()));
+            measurements.add(new Measurement(fps.getStatusDate(), fps.getStatusTime(), fps.getMeasurementValue(), fps.getMeasurementID()));
         }
 
         return measurements;

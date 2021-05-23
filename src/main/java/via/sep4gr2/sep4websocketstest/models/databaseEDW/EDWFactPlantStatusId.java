@@ -8,16 +8,18 @@ public class EDWFactPlantStatusId implements Serializable
     private int P_ID;
     private int D_ID;
     private int T_ID;
+    private int M_ID;
 
     public EDWFactPlantStatusId()
     {
     }
 
-    public EDWFactPlantStatusId(int p_ID, int d_ID, int t_ID)
+    public EDWFactPlantStatusId(int p_ID, int d_ID, int t_ID, int m_ID)
     {
         P_ID = p_ID;
         D_ID = d_ID;
         T_ID = t_ID;
+        M_ID = m_ID;
     }
 
     public int getP_ID()
@@ -50,18 +52,28 @@ public class EDWFactPlantStatusId implements Serializable
         T_ID = t_ID;
     }
 
+    public int getM_ID()
+    {
+        return M_ID;
+    }
+
+    public void setM_ID(int m_ID)
+    {
+        M_ID = m_ID;
+    }
+
     @Override
     public boolean equals(Object o)
     {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         EDWFactPlantStatusId that = (EDWFactPlantStatusId) o;
-        return P_ID == that.P_ID && D_ID == that.D_ID && T_ID == that.T_ID;
+        return P_ID == that.P_ID && D_ID == that.D_ID && T_ID == that.T_ID && M_ID == that.M_ID;
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(P_ID, D_ID, T_ID);
+        return Objects.hash(P_ID, D_ID, T_ID, M_ID);
     }
 }
