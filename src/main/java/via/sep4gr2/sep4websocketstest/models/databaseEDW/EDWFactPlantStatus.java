@@ -10,43 +10,43 @@ public class EDWFactPlantStatus
     @ManyToOne
     @Id
     @JoinColumn(name = "P_ID", referencedColumnName = "P_ID")
-    private EDWDimPlant P_ID;
+    private EDWDimPlant PID;
 
     @ManyToOne
     @Id
     @JoinColumn(name = "D_ID", referencedColumnName = "D_ID")
-    private EDWDimDate D_ID;
+    private EDWDimDate DID;
 
     @ManyToOne
     @Id
     @JoinColumn(name = "T_ID", referencedColumnName = "T_ID")
-    private EDWDimTime T_ID;
+    private EDWDimTime TID;
 
     @ManyToOne
     @Id
     @JoinColumn(name = "M_ID", referencedColumnName = "M_ID")
-    private EDWDimMeasurement M_ID;
+    private EDWDimMeasurement MID;
 
     private double MeasurementValue;
 
-    public EDWDimMeasurement getM_ID()
+    public EDWDimMeasurement getMID()
     {
-        return M_ID;
+        return MID;
     }
 
-    public void setM_ID(EDWDimMeasurement measurement_type)
+    public void setMID(EDWDimMeasurement measurement_type)
     {
-        this.M_ID = measurement_type;
+        this.MID = measurement_type;
     }
 
-    public EDWDimPlant getP_ID()
+    public EDWDimPlant getPID()
     {
-        return P_ID;
+        return PID;
     }
 
-    public void setP_ID(EDWDimPlant p_ID)
+    public void setPID(EDWDimPlant PID)
     {
-        this.P_ID = p_ID;
+        this.PID = PID;
     }
 
     public double getMeasurementValue()
@@ -54,24 +54,24 @@ public class EDWFactPlantStatus
         return MeasurementValue;
     }
 
-    public EDWDimDate getD_ID()
+    public EDWDimDate getDID()
     {
-        return D_ID;
+        return DID;
     }
 
-    public void setD_ID(EDWDimDate d_ID)
+    public void setDID(EDWDimDate DID)
     {
-        D_ID = d_ID;
+        this.DID = DID;
     }
 
-    public EDWDimTime getT_ID()
+    public EDWDimTime getTID()
     {
-        return T_ID;
+        return TID;
     }
 
-    public void setT_ID(EDWDimTime t_ID)
+    public void setTID(EDWDimTime TID)
     {
-        T_ID = t_ID;
+        this.TID = TID;
     }
 
     public void setMeasurementValue(double measurement_value)

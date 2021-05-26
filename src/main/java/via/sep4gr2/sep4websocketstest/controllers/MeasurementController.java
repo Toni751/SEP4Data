@@ -27,34 +27,4 @@ public class MeasurementController
             return null;
         }
     }
-
-//    @CrossOrigin(origins = "*")
-//    @GetMapping("/average")
-//    public @ResponseBody
-//    double getAverageMeasurement(@RequestParam String measurementType, @RequestParam int plantId)
-//    {
-//        try
-//        {
-//            return edwMeasurementService.getAverage(measurementType, plantId);
-//        } catch (Exception e)
-//        {
-//            System.out.println(e.getMessage());
-//            return 0;
-//        }
-//    }
-//
-//    @CrossOrigin(origins = "*")
-//    @GetMapping("/history")
-//    public @ResponseBody
-//    List<Double> getMeasurementHistory(@RequestParam String measurementType, @RequestParam int plantId)
-//    {
-//        try
-//        {
-//            return edwMeasurementService.getTemperatureHistory(measurementType, plantId);
-//        } catch (Exception e)
-//        {
-//            System.out.println(e.getMessage());
-//            return null;
-//        }
-//    }
 }

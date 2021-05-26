@@ -10,7 +10,8 @@ public class EDWDimMeasurement
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int M_ID;
     private  int measurement_ID;
-    private String measurement_name;
+    @Column(name = "measurement_name")
+    private String measurementName;
 
     public int getM_ID()
     {
@@ -32,13 +33,22 @@ public class EDWDimMeasurement
         this.measurement_ID = measurement_ID;
     }
 
-    public String getMeasurement_name()
+    public String getMeasurementName()
     {
-        return measurement_name;
+        return measurementName;
     }
 
-    public void setMeasurement_name(String measurement_name)
+    public void setMeasurementName(String measurement_name)
     {
-        this.measurement_name = measurement_name;
+        this.measurementName = measurement_name;
+    }
+
+    @Override
+    public String toString() {
+        return "EDWDimMeasurement{" +
+                "M_ID=" + M_ID +
+                ", measurement_ID=" + measurement_ID +
+                ", measurementName='" + measurementName + '\'' +
+                '}';
     }
 }

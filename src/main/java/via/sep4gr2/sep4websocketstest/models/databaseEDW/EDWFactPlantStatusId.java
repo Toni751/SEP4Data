@@ -5,61 +5,61 @@ import java.util.Objects;
 
 public class EDWFactPlantStatusId implements Serializable
 {
-    private int P_ID;
-    private int D_ID;
-    private int T_ID;
-    private int M_ID;
+    private int PID;
+    private int DID;
+    private int TID;
+    private int MID;
 
     public EDWFactPlantStatusId()
     {
     }
 
-    public EDWFactPlantStatusId(int p_ID, int d_ID, int t_ID, int m_ID)
+    public EDWFactPlantStatusId(int PID, int DID, int TID, int MID)
     {
-        P_ID = p_ID;
-        D_ID = d_ID;
-        T_ID = t_ID;
-        M_ID = m_ID;
+        this.PID = PID;
+        this.DID = DID;
+        this.TID = TID;
+        this.MID = MID;
     }
 
-    public int getP_ID()
+    public int getPID()
     {
-        return P_ID;
+        return PID;
     }
 
-    public void setP_ID(int p_ID)
+    public void setPID(int PID)
     {
-        P_ID = p_ID;
+        this.PID = PID;
     }
 
-    public int getD_ID()
+    public int getDID()
     {
-        return D_ID;
+        return DID;
     }
 
-    public void setD_ID(int d_ID)
+    public void setDID(int DID)
     {
-        D_ID = d_ID;
+        this.DID = DID;
     }
 
-    public int getT_ID()
+    public int getTID()
     {
-        return T_ID;
+        return TID;
     }
 
-    public void setT_ID(int t_ID)
+    public void setTID(int TID)
     {
-        T_ID = t_ID;
+        this.TID = TID;
     }
 
-    public int getM_ID()
+    public int getMID()
     {
-        return M_ID;
+        return MID;
     }
 
-    public void setM_ID(int m_ID)
+    public void setMID(int MID)
     {
-        M_ID = m_ID;
+        this.MID = MID;
     }
 
     @Override
@@ -68,12 +68,12 @@ public class EDWFactPlantStatusId implements Serializable
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         EDWFactPlantStatusId that = (EDWFactPlantStatusId) o;
-        return P_ID == that.P_ID && D_ID == that.D_ID && T_ID == that.T_ID && M_ID == that.M_ID;
+        return PID == that.PID && DID == that.DID && TID == that.TID && MID == that.MID;
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(P_ID, D_ID, T_ID, M_ID);
+        return Objects.hash(PID, DID, TID, MID);
     }
 }

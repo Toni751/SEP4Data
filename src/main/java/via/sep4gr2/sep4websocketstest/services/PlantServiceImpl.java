@@ -19,18 +19,11 @@ public class PlantServiceImpl implements PlantService
     @Autowired
     private DimPlantRepository dimPlantRepository;
 
-    @Autowired
-    private EdwDimPlantRepository edwDimPlantRepository;
-
-    @Autowired
-    private LoriotControllerImpl loriotController;
-
     @Override
     public int insertPlant(DimPlant plant)
     {
         DimPlant savedPlant = dimPlantRepository.save(plant);
-        int plantId = savedPlant.getPlantID();
-        return plantId;
+        return savedPlant.getPlantID();
     }
 
     @Override

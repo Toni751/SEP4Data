@@ -4,6 +4,7 @@ import com.google.common.base.Splitter;
 import com.google.common.collect.Iterables;
 import com.google.gson.Gson;
 import org.springframework.stereotype.Component;
+import via.sep4gr2.sep4websocketstest.models.database.DimMeasurement;
 import via.sep4gr2.sep4websocketstest.models.database.DimPlant;
 import via.sep4gr2.sep4websocketstest.models.database.FactPlantStatus;
 import via.sep4gr2.sep4websocketstest.models.loriotnetworking.Command;
@@ -20,11 +21,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.TimeZone;
 
+import via.sep4gr2.sep4websocketstest.repositories.DimMeasurementRepository;
 import via.sep4gr2.sep4websocketstest.repositories.DimPlantRepository;
 import via.sep4gr2.sep4websocketstest.services.MeasurementService;
 
 @Component
-public class LoriotControllerImpl implements LoriotController{
+public class LoriotControllerImpl{
     private final Gson gson = new Gson();
     private final LoriotWebSocketClient socketClient;
 
@@ -32,13 +34,16 @@ public class LoriotControllerImpl implements LoriotController{
 
     private final DimPlantRepository plantRepository;
 
-    public LoriotControllerImpl(DimPlantRepository plantRepository, MeasurementService measurementService) {
+    private final DimMeasurementRepository measurementRepository;
+
+    public LoriotControllerImpl(DimPlantRepository plantRepository, MeasurementService measurementService, DimMeasurementRepository measurementRepository) {
+        this.measurementRepository = measurementRepository;
         socketClient = new LoriotWebSocketClient();
         socketClient.addPropertyChangeListener("RECEIVED_DATA", this::receiveData);
         // send(new Command("tx", "hello there?", 109)); // produces null pointer exception because the websocket instance in the client is null
         this.plantRepository = plantRepository;
         this.measurementService = measurementService;
-        // receiveMessage(new UpLinkMessage(Instant.now().toEpochMilli(), true, 123, 1027, "0000002000e000b00002"));
+        // receiveMessage(new UpLinkMessage(Instant.now().toEpochMilli(), true, 123, 1027, "10313016211c42ac"));
     }
 
     public void send(Command command) {
@@ -60,46 +65,73 @@ public class LoriotControllerImpl implements LoriotController{
     private void receiveMessage(UpLinkMessage message) {
         SensorData sensorData = processData(message);
         System.out.println("Received message: " + sensorData);
-        DimPlant plant = plantRepository.getPlantById(sensorData.getPlantId());
+        // DimPlant plant = plantRepository.getPlantById(sensorData.getPlantId());
+        List<DimPlant> allPlants = plantRepository.findAll();
+        List<DimMeasurement> measurements = measurementRepository.findAll();
 
         List<FactPlantStatus> statuses = new ArrayList<>();
 
-        if(sensorData.getTemperature() > 0){
-            FactPlantStatus plantStatus = new FactPlantStatus();
-            plantStatus.setPlantID(plant);
-            plantStatus.setStatusDate(sensorData.getDate());
-            plantStatus.setStatusTime(sensorData.getTime());
-            // plantStatus.setMeasurementID("TEMP");
-            plantStatus.setMeasurementValue(sensorData.getTemperature());
-            statuses.add(plantStatus);
+        DimMeasurement tempMeasurement = new DimMeasurement();
+        DimMeasurement humMeasurement = new DimMeasurement();
+        DimMeasurement lightMeasurement = new DimMeasurement();
+        DimMeasurement co2Measurement = new DimMeasurement();
+
+        for (DimMeasurement measurement : measurements) {
+            switch (measurement.getMeasurementName()){
+                case "TEMP":
+                    tempMeasurement = measurement;
+                    break;
+                case "LIGHT":
+                    lightMeasurement = measurement;
+                    break;
+                case "CO2":
+                    co2Measurement = measurement;
+                    break;
+                case "HUM":
+                    humMeasurement = measurement;
+                    break;
+            }
         }
-        if(sensorData.getHumidity() > 0){
-            FactPlantStatus plantStatus = new FactPlantStatus();
-            plantStatus.setPlantID(plant);
-            plantStatus.setStatusDate(sensorData.getDate());
-            plantStatus.setStatusTime(sensorData.getTime());
-            // plantStatus.setMeasurementID("HUM");
-            plantStatus.setMeasurementValue(sensorData.getHumidity());
-            statuses.add(plantStatus);
+
+        for (DimPlant plant : allPlants) {
+            if(sensorData.getTemperature() > 0){
+                FactPlantStatus plantStatus = new FactPlantStatus();
+                plantStatus.setPlantID(plant);
+                plantStatus.setStatusDate(sensorData.getDate());
+                plantStatus.setStatusTime(sensorData.getTime());
+                plantStatus.setMeasurementID(tempMeasurement);
+                plantStatus.setMeasurementValue(sensorData.getTemperature());
+                statuses.add(plantStatus);
+            }
+            if(sensorData.getHumidity() > 0){
+                FactPlantStatus plantStatus = new FactPlantStatus();
+                plantStatus.setPlantID(plant);
+                plantStatus.setStatusDate(sensorData.getDate());
+                plantStatus.setStatusTime(sensorData.getTime());
+                plantStatus.setMeasurementID(humMeasurement);
+                plantStatus.setMeasurementValue(sensorData.getHumidity());
+                statuses.add(plantStatus);
+            }
+            if(sensorData.getLight() > 0){
+                FactPlantStatus plantStatus = new FactPlantStatus();
+                plantStatus.setPlantID(plant);
+                plantStatus.setStatusDate(sensorData.getDate());
+                plantStatus.setStatusTime(sensorData.getTime());
+                plantStatus.setMeasurementID(lightMeasurement);
+                plantStatus.setMeasurementValue(sensorData.getLight());
+                statuses.add(plantStatus);
+            }
+            if(sensorData.getCo2() > 0){
+                FactPlantStatus plantStatus = new FactPlantStatus();
+                plantStatus.setPlantID(plant);
+                plantStatus.setStatusDate(sensorData.getDate());
+                plantStatus.setStatusTime(sensorData.getTime());
+                plantStatus.setMeasurementID(co2Measurement);
+                plantStatus.setMeasurementValue(sensorData.getCo2());
+                statuses.add(plantStatus);
+            }
         }
-        if(sensorData.getLight() > 0){
-            FactPlantStatus plantStatus = new FactPlantStatus();
-            plantStatus.setPlantID(plant);
-            plantStatus.setStatusDate(sensorData.getDate());
-            plantStatus.setStatusTime(sensorData.getTime());
-            // plantStatus.setMeasurementID("LIGHT");
-            plantStatus.setMeasurementValue(sensorData.getLight());
-            statuses.add(plantStatus);
-        }
-        if(sensorData.getCo2() > 0){
-            FactPlantStatus plantStatus = new FactPlantStatus();
-            plantStatus.setPlantID(plant);
-            plantStatus.setStatusDate(sensorData.getDate());
-            plantStatus.setStatusTime(sensorData.getTime());
-            // plantStatus.setMeasurementID("CO2");
-            plantStatus.setMeasurementValue(sensorData.getCo2());
-            statuses.add(plantStatus);
-        }
+
         System.out.println("Statues length " + statuses.size());
         measurementService.add(statuses);
     }
@@ -126,26 +158,36 @@ public class LoriotControllerImpl implements LoriotController{
         Iterable<String> result = Splitter.fixedLength(4).split(message.getData());
         String[] parts = Iterables.toArray(result, String.class);
         System.out.println("Got message data parts " + Arrays.toString(parts));
+//  102a 301c 2012 405c
+        int temp = 0;
+        int hum = 0;
+        int co2 = 0;
+        int light = 0;
 
-        String humSHex = parts[0];
-        String tempSHex = parts[1];
-        String co2Hex = parts[2];
-        String lightHex = parts[3];
-        String plantId = parts[4];
-
-        int temp = Integer.parseInt(tempSHex, 16);
-        int hum = Integer.parseInt(humSHex, 16);
-        int co2 = Integer.parseInt(co2Hex, 16);
-        int lightR = Integer.parseInt(lightHex, 16);
-        int plantIdR = Integer.parseInt(plantId, 16);
+        for (String part : parts) {
+            String tempString = part.substring(1);
+            switch (part.charAt(0)) {
+                case '1':
+                    hum = Integer.parseInt(tempString, 16);
+                    break;
+                case '2':
+                    co2 = Integer.parseInt(tempString, 16);
+                    break;
+                case '3':
+                    temp = Integer.parseInt(tempString, 16);
+                    break;
+                case '4':
+                    light = Integer.parseInt(tempString, 16);
+                    break;
+            }
+        }
 
         sensorData.setDate(date);
         sensorData.setTime(time);
         sensorData.setHumidity(hum);
         sensorData.setTemperature(temp);
         sensorData.setCo2(co2);
-        sensorData.setLight(lightR);
-        sensorData.setPlantId(plantIdR);
+        sensorData.setLight(light);
 
         return sensorData;
     }

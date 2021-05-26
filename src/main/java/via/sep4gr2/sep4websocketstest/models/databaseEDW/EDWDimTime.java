@@ -11,10 +11,9 @@ public class EDWDimTime
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int T_ID;
     @Column(columnDefinition = "TIME")
-    private LocalTime time;
+    private String time;
     private int Hour;
     private int Minute;
-    private int Second;
     private String DayPeriod;
 
     public int getT_ID()
@@ -27,12 +26,12 @@ public class EDWDimTime
         T_ID = t_ID;
     }
 
-    public LocalTime getTime()
+    public String getTime()
     {
         return time;
     }
 
-    public void setTime(LocalTime time)
+    public void setTime(String time)
     {
         this.time = time;
     }
@@ -55,16 +54,6 @@ public class EDWDimTime
     public void setMinute(int minute)
     {
         Minute = minute;
-    }
-
-    public int getSecond()
-    {
-        return Second;
-    }
-
-    public void setSecond(int second)
-    {
-        Second = second;
     }
 
     public String getDayPeriod()

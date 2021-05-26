@@ -12,7 +12,7 @@ public class EDWDimDate
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int D_ID;
     @Column(columnDefinition = "DATE")
-    private LocalDate Date;
+    private String Date;
     private int Day;
     private int Month;
     private String MonthName;
@@ -33,12 +33,12 @@ public class EDWDimDate
         D_ID = d_ID;
     }
 
-    public LocalDate getDate()
+    public String getDate()
     {
         return Date;
     }
 
-    public void setDate(LocalDate date)
+    public void setDate(String date)
     {
         Date = date;
     }

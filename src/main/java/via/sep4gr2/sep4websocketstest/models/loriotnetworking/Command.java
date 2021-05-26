@@ -1,23 +1,13 @@
 package via.sep4gr2.sep4websocketstest.models.loriotnetworking;
 
 public class Command {
-    // private String commandId;
     private String value;
     private int destinationPort;
 
     public Command(String value, int destinationPort) {
-        // this.commandId = commandId;
         this.value = value;
         this.destinationPort = destinationPort;
     }
-
-//    public String getCommandId() {
-//        return commandId;
-//    }
-//
-//    public void setCommandId(String commandId) {
-//        this.commandId = commandId;
-//    }
 
     public String getValue() {
         return value;

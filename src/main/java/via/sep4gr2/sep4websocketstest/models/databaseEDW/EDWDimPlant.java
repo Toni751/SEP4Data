@@ -2,6 +2,7 @@ package via.sep4gr2.sep4websocketstest.models.databaseEDW;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "dim_plant", schema = "edw")
@@ -26,8 +27,12 @@ public class EDWDimPlant
 
     private String common_plant_name;
     private String category_name;
-    private int ValidFrom;
-    private int ValidTo;
+
+    @Column(columnDefinition = "DATETIME")
+    private LocalDateTime ValidFrom;
+
+    @Column(columnDefinition = "DATETIME")
+    private LocalDateTime ValidTo;
 
     public int getP_ID()
     {
@@ -39,22 +44,22 @@ public class EDWDimPlant
         P_ID = p_ID;
     }
 
-    public int getValidFrom()
+    public LocalDateTime getValidFrom()
     {
         return ValidFrom;
     }
 
-    public void setValidFrom(int validFrom)
+    public void setValidFrom(LocalDateTime validFrom)
     {
         ValidFrom = validFrom;
     }
 
-    public int getValidTo()
+    public LocalDateTime getValidTo()
     {
         return ValidTo;
     }
 
-    public void setValidTo(int validTo)
+    public void setValidTo(LocalDateTime validTo)
     {
         ValidTo = validTo;
     }
@@ -167,5 +172,25 @@ public class EDWDimPlant
     public void setCategory_name(String category_name)
     {
         this.category_name = category_name;
+    }
+
+    @Override
+    public String toString() {
+        return "EDWDimPlant{" +
+                "P_ID=" + P_ID +
+                ", plant_ID=" + plant_ID +
+                ", garden_name='" + garden_name + '\'' +
+                ", height=" + height +
+                ", stage_of_growth='" + stage_of_growth + '\'' +
+                ", soil_type='" + soil_type + '\'' +
+                ", own_soil_volume=" + own_soil_volume +
+                ", garden_location='" + garden_location + '\'' +
+                ", seeded_at=" + seeded_at +
+                ", harvested_at=" + harvested_at +
+                ", common_plant_name='" + common_plant_name + '\'' +
+                ", category_name='" + category_name + '\'' +
+                ", ValidFrom=" + ValidFrom +
+                ", ValidTo=" + ValidTo +
+                '}';
     }
 }

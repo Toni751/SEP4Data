@@ -1,7 +1,6 @@
 package via.sep4gr2.sep4websocketstest.services;
 
 import via.sep4gr2.sep4websocketstest.models.database.DimPlant;
-import via.sep4gr2.sep4websocketstest.models.restnetworking.PlantWithSensor;
 
 import java.time.LocalDate;
 import java.util.List;

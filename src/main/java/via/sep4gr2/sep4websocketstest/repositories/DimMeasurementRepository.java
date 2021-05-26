@@ -6,6 +6,4 @@ import via.sep4gr2.sep4websocketstest.models.database.DimMeasurement;
 import via.sep4gr2.sep4websocketstest.models.database.DimPlant;
 
 public interface DimMeasurementRepository extends JpaRepository<DimMeasurement, Integer> {
-    DimMeasurement getDimMeasurementByMeasurementID(int id);
-    DimMeasurement getDimMeasurementByMeasurementName(String name);
 }
