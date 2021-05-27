@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import via.sep4gr2.sep4websocketstest.models.database.DimPlant;
+import via.sep4gr2.sep4websocketstest.models.databaseEDW.EDWDimPlant;
 import via.sep4gr2.sep4websocketstest.services.PlantService;
 
 import java.util.List;
@@ -32,13 +33,6 @@ public class PlantController
     }
 
     @CrossOrigin(origins = "*")
-    @GetMapping
-    public @ResponseBody
-    List<DimPlant> getAllPlants(){
-        return plantService.getAllPlants();
-    }
-
-    @CrossOrigin(origins = "*")
     @DeleteMapping(value = "/{id}")
     public @ResponseBody
     void removePlant(@PathVariable int id) {
@@ -55,7 +49,7 @@ public class PlantController
     @CrossOrigin(origins = "*")
     @GetMapping("/garden")
     public @ResponseBody
-    List<DimPlant> getPlantsByGarden(@RequestParam String gardenName)
+    List<EDWDimPlant> getPlantsByGarden(@RequestParam String gardenName)
     {
         try
         {
