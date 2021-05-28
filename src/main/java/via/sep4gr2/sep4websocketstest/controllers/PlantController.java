@@ -68,7 +68,7 @@ public class PlantController
     {
         try
         {
-            plantService.updatePlant(id, plant.getGardenName(), plant.getHeight(),  plant.getSoilType(), plant.getStageOfGrowth(), plant.getOwnSoilVolume(), plant.getGardenLocation(), plant.getHarvestedAt(), plant.getCommonPlantName(), plant.getCategoryName());
+            plantService.updatePlant(id, plant.getGarden_name(), plant.getHeight(),  plant.getSoil_type(), plant.getStage_of_growth(), plant.getOwn_soil_volume(), plant.getGarden_location(), plant.getHarvested_at(), plant.getCommon_plant_name(), plant.getCategory_name());
         }
         catch (Exception e)
         {

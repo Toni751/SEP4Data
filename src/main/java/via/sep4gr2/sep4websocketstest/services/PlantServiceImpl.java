@@ -2,7 +2,6 @@ package via.sep4gr2.sep4websocketstest.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import via.sep4gr2.sep4websocketstest.loriotconnection.LoriotControllerImpl;
 import via.sep4gr2.sep4websocketstest.models.database.DimMeasurement;
 import via.sep4gr2.sep4websocketstest.models.database.DimPlant;
 import via.sep4gr2.sep4websocketstest.models.database.FactPlantStatus;
@@ -35,7 +34,7 @@ public class PlantServiceImpl implements PlantService {
     public int insertPlant(DimPlant plant) {
         DimPlant savedPlant = dimPlantRepository.save(plant);
         generateMeasurementsForPlant(savedPlant);
-        return savedPlant.getPlantID();
+        return savedPlant.getPlant_ID();
     }
 
     private void generateMeasurementsForPlant(DimPlant plant) {

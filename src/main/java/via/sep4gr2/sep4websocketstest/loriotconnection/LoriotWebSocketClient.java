@@ -11,7 +11,7 @@ import java.nio.ByteBuffer;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 
-public class LoriotWebSocketClient implements WebSocket.Listener, PropertyChangeSubject {
+public class    LoriotWebSocketClient implements WebSocket.Listener, PropertyChangeSubject {
     private WebSocket server = null;
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
     private static final String SERVER_URL = "wss://iotnet.cibicom.dk/app?token=vnoTuQAAABFpb3RuZXQuY2liaWNvbS5kaxJcKw-s3YsQp99sxC0vwhU=";

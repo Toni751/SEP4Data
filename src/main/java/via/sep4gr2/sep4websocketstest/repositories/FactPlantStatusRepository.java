@@ -14,6 +14,6 @@ import java.util.List;
 public interface FactPlantStatusRepository extends JpaRepository<FactPlantStatus, FactPlantStatusId> {
     @Transactional
     @Modifying
-    @Query("DELETE FROM FactPlantStatus p WHERE p.plantID.plantID = :id")
-    void deletePlant(int id);
+    @Query("DELETE FROM FactPlantStatus p WHERE p.plantID.plant_ID = :plant_ID")
+    void deletePlant(int plant_ID);
 }
