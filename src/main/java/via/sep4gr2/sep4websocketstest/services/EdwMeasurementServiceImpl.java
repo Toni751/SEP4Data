@@ -41,10 +41,15 @@ public class EdwMeasurementServiceImpl implements EdwMeasurementService {
     private List<Measurement> calculateHistoryMeasurement(int plantId, String measurementType) {
         List<EDWFactPlantStatus> factPlantStatuses = factPlantStatusRepository.getMeasurementHistoryForPlant(measurementType, plantId);
         List<Measurement> measurements = new ArrayList<>();
+        int i = 0;
         for (EDWFactPlantStatus fps : factPlantStatuses) {
             measurements.add(new Measurement(fps.getDID().getDate(), fps.getTID().getTime(), fps.getMeasurementValue(), fps.getMID().getMeasurementName()));
+            i++;
+            if(i==100){
+                break;
+            }
         }
-        return measurements.subList(measurements.size()-100,measurements.size());
+        return measurements;
     }
 
     private List<Measurement> calculateAverageMeasurement(int plantId, String measurementType) {
