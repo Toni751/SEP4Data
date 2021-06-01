@@ -44,7 +44,7 @@ public class EdwMeasurementServiceImpl implements EdwMeasurementService {
         for (EDWFactPlantStatus fps : factPlantStatuses) {
             measurements.add(new Measurement(fps.getDID().getDate(), fps.getTID().getTime(), fps.getMeasurementValue(), fps.getMID().getMeasurementName()));
         }
-        return measurements;
+        return measurements.subList(measurements.size()-100,measurements.size());
     }
 
     private List<Measurement> calculateAverageMeasurement(int plantId, String measurementType) {
