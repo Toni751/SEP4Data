@@ -45,7 +45,7 @@ public class EdwMeasurementServiceImpl implements EdwMeasurementService {
         for (EDWFactPlantStatus fps : factPlantStatuses) {
             measurements.add(new Measurement(fps.getDID().getDate(), fps.getTID().getTime(), fps.getMeasurementValue(), fps.getMID().getMeasurementName()));
             i++;
-            if(i==100){
+            if(i==50){
                 break;
             }
         }
